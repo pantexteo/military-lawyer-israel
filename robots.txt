@@ -1,11 +1,11 @@
 User-agent: *
 Allow: /
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://military-lawyer-israel.vercel.app/sitemap.xml
 
 User-agent: Yandex
 Allow: /
-Host: https://example.com
-Sitemap: https://example.com/sitemap.xml
+Host: https://military-lawyer-israel.vercel.app
+Sitemap: https://military-lawyer-israel.vercel.app/sitemap.xml
 
 User-agent: Mail.Ru
 Allow: /
