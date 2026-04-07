@@ -22,24 +22,54 @@
   <url>
     <loc>https://military-lawyer-israel.vercel.app/dezertir-cahala.html</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://military-lawyer-israel.vercel.app/dezertir-cahala.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://military-lawyer-israel.vercel.app/dezertir-cahala-he.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://military-lawyer-israel.vercel.app/dezertir-cahala.html"/>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://military-lawyer-israel.vercel.app/dezertir-cahala-he.html</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://military-lawyer-israel.vercel.app/dezertir-cahala-he.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://military-lawyer-israel.vercel.app/dezertir-cahala.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://military-lawyer-israel.vercel.app/dezertir-cahala.html"/>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://military-lawyer-israel.vercel.app/zaderzhali-v-aeroportu.html</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://military-lawyer-israel.vercel.app/zaderzhali-v-aeroportu.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://military-lawyer-israel.vercel.app/zaderzhali-v-aeroportu-he.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://military-lawyer-israel.vercel.app/zaderzhali-v-aeroportu.html"/>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://military-lawyer-israel.vercel.app/zaderzhali-v-aeroportu-he.html</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://military-lawyer-israel.vercel.app/zaderzhali-v-aeroportu-he.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://military-lawyer-israel.vercel.app/zaderzhali-v-aeroportu.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://military-lawyer-israel.vercel.app/zaderzhali-v-aeroportu.html"/>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://military-lawyer-israel.vercel.app/voennyj-tribunal-izrail.html</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://military-lawyer-israel.vercel.app/voennyj-tribunal-izrail.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://military-lawyer-israel.vercel.app/voennyj-tribunal-izrail-he.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://military-lawyer-israel.vercel.app/voennyj-tribunal-izrail.html"/>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://military-lawyer-israel.vercel.app/voennyj-tribunal-izrail-he.html</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://military-lawyer-israel.vercel.app/voennyj-tribunal-izrail-he.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://military-lawyer-israel.vercel.app/voennyj-tribunal-izrail.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://military-lawyer-israel.vercel.app/voennyj-tribunal-izrail.html"/>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
