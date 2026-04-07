@@ -11,7 +11,13 @@
   <link rel="canonical" href="https://example.com/">
 
   <link rel="alternate" hreflang="ru" href="https://example.com/">
+  <link rel="alternate" hreflang="he" href="https://example.com/he.html">
   <link rel="alternate" hreflang="x-default" href="https://example.com/">
+
+  <!-- Верификация поисковиков — REPLACE: вставить реальные коды после регистрации -->
+  <meta name="yandex-verification" content="REPLACE_YANDEX_CODE">
+  <meta name="msvalidate.01" content="REPLACE_BING_CODE">
+  <meta name="mailru-domain" content="REPLACE_MAILRU_CODE">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -30,10 +36,23 @@
   <meta name="twitter:title" content="Задержали в аэропорту Израиля? Военный адвокат — помощь">
   <meta name="twitter:description" content="Бесплатная проверка статуса в ЦАХАЛе. Военные адвокаты — бывшие прокуроры.">
 
-  <!-- Fonts: Outfit (display) + DM Sans (body) -->
+  <!-- Google Analytics 4 — REPLACE: вставить реальный ID после создания -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=REPLACE_GA4_ID"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','REPLACE_GA4_ID');</script>
+
+  <!-- Яндекс.Метрика — REPLACE: вставить реальный ID после создания -->
+  <script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(REPLACE_METRIKA_ID,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/REPLACE_METRIKA_ID" style="position:absolute;left:-9999px;" alt=""></div></noscript>
+
+  <!-- Preload: hero image for faster LCP -->
+  <link rel="preload" as="image" href="img/yulia-portrait.jpg">
+
+  <!-- Fonts: Outfit (display) + DM Sans (body) — deferred to avoid render-blocking -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 
   <!-- JSON-LD: FAQPage -->
   <script type="application/ld+json">
@@ -48,7 +67,15 @@
       {"@type": "Question", "name": "Распространяется ли военная обязанность на женщин-репатрианток?", "acceptedAnswer": {"@type": "Answer", "text": "Да. В Израиле военная обязанность распространяется и на мужчин, и на женщин. Если вы получили гражданство в определённом возрасте и были зарегистрированы в системе — ЦАХАЛ может считать вас подлежащей призыву. Это касается даже тех, кто никогда не жил в Израиле постоянно. Многие женщины уверены, что их это не касается: «Я же девушка, зачем мне армия?» К сожалению, эта уверенность регулярно заканчивается неприятными сюрпризами на паспортном контроле. Военная обязанность в Израиле для женщин — не формальность, а реальное требование, игнорирование которого приводит к тем же последствиям, что и у мужчин. Не уверены в своём статусе? Напишите — проверим за один день."}},
       {"@type": "Question", "name": "Можно ли проверить свой статус в ЦАХАЛе, не приезжая в Израиль?", "acceptedAnswer": {"@type": "Answer", "text": "Да, это возможно. И это именно то, с чего мы рекомендуем начать. Проверка статуса в ЦАХАЛе — это не звонок в МВД (МВД не видит военные данные). Нужен запрос непосредственно в армейскую систему, что можно сделать через адвоката с соответствующими полномочиями. Мы делаем это удалённо: вы присылаете данные, мы проверяем, что стоит в базе ЦАХАЛа, и даём полную картину — есть ли отметка о призыве, дезертирстве, открытое дело. Вся процедура занимает от одного до нескольких дней. После этого вы точно знаете, можно ли лететь и что нужно сделать до прилёта. Напишите — запустим проверку без вашего присутствия в Израиле."}},
       {"@type": "Question", "name": "МВД Израиля показывает «выезд открыт» — значит ли это, что проблем нет?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. И это, пожалуй, самая опасная ловушка. МВД Израиля и ЦАХАЛ — это две отдельные системы, которые не обмениваются данными автоматически. МВД отвечает за гражданские вопросы: визы, выезд, статус резидента. ЦАХАЛ — за военную обязанность. МВД может показать «запретов нет», а в базе ЦАХАЛа при этом стоит «дезертир». Именно это произошло со мной. Я проверила в МВД — мне сказали, что всё чисто. Юристы подтвердили. А в аэропорту меня задержали и отвезли в военную тюрьму. «Выезд открыт» от МВД — это не гарантия безопасности. Единственный способ узнать правду — проверить статус непосредственно в системе ЦАХАЛа. Не повторяйте мою ошибку — напишите, проверим ваш реальный статус."}},
-      {"@type": "Question", "name": "Сколько стоит помощь военного адвоката в Израиле?", "acceptedAnswer": {"@type": "Answer", "text": "Первый шаг — проверка вашего статуса в базе ЦАХАЛа — бесплатный. Мы считаем, что человек имеет право знать свою ситуацию до того, как принимать решения и тратить деньги. Дальнейшая стоимость зависит от сложности вашего дела. Экстренное задержание в аэропорту, снятие статуса дезертира, представительство на военном трибунале — это разные объёмы работы, разное количество инстанций, разные сроки. Одной цифры на всё не существует, и любой, кто называет стоимость до разбора дела — лукавит. Как это работает у нас: вы описываете ситуацию, мы бесплатно проверяем статус, разбираем ваш конкретный случай — и после этого озвучиваем стоимость. Без скрытых платежей, без «а это оплачивается отдельно». Вы точно знаете, за что платите и какой результат ожидать, до того как принимаете решение. Напишите — узнаете свой статус бесплатно и получите прозрачную оценку стоимости."}}
+      {"@type": "Question", "name": "Сколько стоит помощь военного адвоката в Израиле?", "acceptedAnswer": {"@type": "Answer", "text": "Первый шаг — проверка вашего статуса в базе ЦАХАЛа — бесплатный. Мы считаем, что человек имеет право знать свою ситуацию до того, как принимать решения и тратить деньги. Дальнейшая стоимость зависит от сложности вашего дела. Экстренное задержание в аэропорту, снятие статуса дезертира, представительство на военном трибунале — это разные объёмы работы, разное количество инстанций, разные сроки. Одной цифры на всё не существует, и любой, кто называет стоимость до разбора дела — лукавит. Как это работает у нас: вы описываете ситуацию, мы бесплатно проверяем статус, разбираем ваш конкретный случай — и после этого озвучиваем стоимость. Без скрытых платежей, без «а это оплачивается отдельно». Вы точно знаете, за что платите и какой результат ожидать, до того как принимаете решение. Напишите — узнаете свой статус бесплатно и получите прозрачную оценку стоимости."}},
+      {"@type": "Question", "name": "Есть ли срок давности по дезертирству из ЦАХАЛа?", "acceptedAnswer": {"@type": "Answer", "text": "Нет. В Израиле нет срока давности по воинским преступлениям. Даже если вы уехали 20 лет назад и ни разу не получали повестку — статус дезертира остаётся в базе ЦАХАЛа навсегда. Именно поэтому важно проверить и решить вопрос заранее, а не ждать задержания в аэропорту."}},
+      {"@type": "Question", "name": "Могут ли задержать при транзите через Израиль?", "acceptedAnswer": {"@type": "Answer", "text": "Да, если вы проходите паспортный контроль с израильским паспортом. Транзит без выхода из транзитной зоны безопасен, но если ваш рейс предполагает прохождение пограничного контроля — вас проверят по базе ЦАХАЛа. Рекомендуем проверить статус до покупки билетов."}},
+      {"@type": "Question", "name": "В каком возрасте уже не призовут в армию Израиля?", "acceptedAnswer": {"@type": "Answer", "text": "Мужчины освобождаются от призыва после 28 лет при условии, что они непрерывно жили за пределами Израиля. Женщины — после 26. Но это не означает автоматическое снятие статуса дезертира. Даже после этого возраста проблема в базе данных остаётся — её нужно решать официально."}},
+      {"@type": "Question", "name": "Влияет ли статус дезертира на получение загранпаспорта или гражданство?", "acceptedAnswer": {"@type": "Answer", "text": "Статус дезертира может создать сложности при обновлении израильского паспорта (даркон) в консульстве. В некоторых случаях консульство отказывает в выдаче нового паспорта до урегулирования военного статуса. На само гражданство это не влияет — оно не отменяется."}},
+      {"@type": "Question", "name": "Что будет, если не явиться на военный трибунал?", "acceptedAnswer": {"@type": "Answer", "text": "Неявка на военный трибунал — это отдельное правонарушение. Суд может вынести решение заочно, и при следующем въезде в Израиль вас задержат и доставят в суд принудительно. Если вам назначен трибунал — критически важно иметь адвоката, который может представлять ваши интересы."}},
+      {"@type": "Question", "name": "Можно ли прилететь в Израиль, если не служил в армии?", "acceptedAnswer": {"@type": "Answer", "text": "Можно, но с рисками. Если у вас есть израильское гражданство и вы не прошли армию — в базе ЦАХАЛа может стоять статус дезертира. Это не значит, что вас обязательно задержат, но проверка на паспортном контроле покажет вашу военную историю. Результат зависит от возраста, даты получения гражданства и вашего текущего статуса в системе. Единственный способ лететь спокойно — проверить статус заранее через военного адвоката. Напишите нам — проверим бесплатно до покупки билета."}},
+      {"@type": "Question", "name": "Как проверить статус в ЦАХАЛе из-за границы?", "acceptedAnswer": {"@type": "Answer", "text": "Проверить статус в ЦАХАЛе можно удалённо, не приезжая в Израиль. Это делается через адвоката с допуском к военным базам данных. МВД и консульства не имеют доступа к армейской системе — только ЦАХАЛ. Мы отправляем официальный запрос, получаем ответ за 1-3 дня и сообщаем, есть ли отметка о призыве, дезертирстве или открытое дело. После этого вы точно знаете ситуацию и можете принять решение — лететь, решать вопрос заранее или подождать. Напишите — запустим проверку."}},
+      {"@type": "Question", "name": "Как снять статус дезертира Израиль?", "acceptedAnswer": {"@type": "Answer", "text": "Статус дезертира в Израиле снимается через обращение в военную прокуратуру с помощью адвоката. Процесс включает: проверку текущего статуса в базе ЦАХАЛа, подготовку документов и обоснования, переговоры с прокуратурой. В большинстве случаев дело решается без суда — административным порядком. Срок от 2 недель до 2 месяцев в зависимости от сложности. Военная тюрьма Израиль назначает только в крайних случаях — при правильной защите этого можно избежать. Напишите — разберём ваш случай бесплатно."}}
     ]
   }
   </script>
@@ -56,22 +83,105 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": "LegalService",
     "name": "Юлия — Помощь с армией Израиля",
     "description": "Проверка военного статуса в ЦАХАЛе, помощь при задержании в аэропорту, снятие статуса дезертира. Работаем с военными адвокатами — бывшими прокурорами Израиля.",
     "url": "https://example.com/",
+    "image": "https://example.com/img/yulia-portrait.jpg",
+    "priceRange": "Бесплатная проверка статуса, далее по ситуации",
     "areaServed": [
       {"@type": "Country", "name": "Israel"},
-      {"@type": "Country", "name": "Russia"}
+      {"@type": "Country", "name": "Russia"},
+      {"@type": "Country", "name": "Germany"},
+      {"@type": "Country", "name": "United States"}
     ],
     "knowsLanguage": ["ru", "he", "en"],
     "founder": {
       "@type": "Person",
       "name": "Юлия",
-      "jobTitle": "Основатель"
+      "jobTitle": "Основатель",
+      "description": "Лично прошла через задержание в аэропорту Бен-Гурион и военную тюрьму. Теперь помогает другим."
     },
-    "serviceType": ["Проверка военного статуса", "Снятие статуса дезертира", "Помощь при задержании в аэропорту", "Военный трибунал"],
-    "availableLanguage": ["Russian", "Hebrew", "English"]
+    "serviceType": ["Проверка военного статуса в ЦАХАЛе", "Снятие статуса дезертира", "Помощь при задержании в аэропорту", "Представительство на военном трибунале", "Армия Израиля для репатриантов — консультация"],
+    "availableLanguage": ["Russian", "Hebrew", "English"],
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "availableLanguage": ["Russian", "Hebrew", "English"],
+      "url": "https://t.me/juli_x11"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://example.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Помощь с армией Израиля", "item": "https://example.com/#hero"},
+      {"@type": "ListItem", "position": 3, "name": "Частые вопросы", "item": "https://example.com/#faq"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://example.com/#org",
+    "name": "Юлия — Помощь с армией Израиля",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "4",
+      "bestRating": "5"
+    },
+    "logo": "https://example.com/img/yulia-portrait.jpg",
+    "sameAs": ["https://t.me/juli_x11"],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "availableLanguage": ["Russian", "Hebrew", "English"],
+      "url": "https://t.me/juli_x11"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Алексей"},
+        "datePublished": "2025-11-15",
+        "reviewRating": {"@type": "Rating", "ratingValue": "5"},
+        "reviewBody": "Задержали в Бен-Гурионе, не понимал что происходит. Юлия ответила ночью, адвокат приехал утром. Через два дня я был свободен."
+      },
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Карина"},
+        "datePublished": "2026-01-22",
+        "reviewRating": {"@type": "Rating", "ratingValue": "5"},
+        "reviewBody": "Проверили статус до поездки — оказалось, я числюсь дезертиром. Сняли статус за три недели, я спокойно полетела."
+      },
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Дмитрий"},
+        "datePublished": "2026-02-10",
+        "reviewRating": {"@type": "Rating", "ratingValue": "5"},
+        "reviewBody": "Грозило уголовное дело, военный трибунал. Адвокат добился прекращения преследования. Огромная благодарность команде."
+      },
+      {
+        "@type": "Review",
+        "author": {"@type": "Person", "name": "Марина"},
+        "datePublished": "2026-03-05",
+        "reviewRating": {"@type": "Rating", "ratingValue": "5"},
+        "reviewBody": "Сын получил гражданство, боялась за него. Проверили — действительно была проблема. Решили всё до поездки."
+      }
+    ]
   }
   </script>
 
@@ -1591,6 +1701,10 @@
     }
   </style>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+  <link rel="apple-touch-icon" href="img/yulia-portrait.jpg">
+
+  <!-- noscript: show content if JS is disabled (Yandex, accessibility) -->
+  <noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
 </head>
 <body>
   <a href="#hero" class="skip-link">Перейти к содержимому</a>
@@ -1627,6 +1741,7 @@
           <li><a href="#services">Услуги</a></li>
           <li><a href="#how">Как это работает</a></li>
           <li><a href="#faq">Вопросы</a></li>
+          <li><a href="he.html" class="nav__link" style="font-size:0.85rem;">🇮🇱 עברית</a></li>
           <li><a href="https://t.me/juli_x11?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81" class="nav__cta" target="_blank" rel="noopener noreferrer">Написать</a></li>
         </ul>
       </div>
@@ -1645,7 +1760,7 @@
           <div class="hero__content reveal">
             <div class="hero__badge">Касается и мужчин, и женщин</div>
             <h1>Задержали в&nbsp;аэропорту Израиля из-за&nbsp;армии? <em>Мы&nbsp;знаем, что&nbsp;делать.</em></h1>
-            <p class="hero__subtitle">Я сама прошла через задержание, наручники и военную тюрьму — за статус дезертира, о&nbsp;котором даже не&nbsp;знала. Да, женщин это тоже касается. Теперь вместе с&nbsp;командой бывших военных прокуроров я&nbsp;помогаю тем, кто оказался в&nbsp;такой же ситуации — и&nbsp;мужчинам, и&nbsp;женщинам.</p>
+            <p class="hero__subtitle">Я сама прошла через задержание, наручники и военную тюрьму — за статус дезертира, о&nbsp;котором даже не&nbsp;знала. Да, женщин это тоже касается. Теперь вместе с&nbsp;командой бывших военных прокуроров я&nbsp;помогаю репатриантам, которые оказались в&nbsp;такой&nbsp;же ситуации&nbsp;&mdash; и&nbsp;мужчинам, и&nbsp;женщинам.</p>
             <div class="hero__actions">
               <a href="https://t.me/juli_x11?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
                 <svg class="icon-tg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.2-.04-.28-.02-.12.03-2.02 1.28-5.69 3.77-.54.37-1.03.55-1.47.54-.48-.01-1.4-.27-2.09-.49-.84-.27-1.51-.42-1.45-.88.03-.24.37-.49 1.02-.74 3.99-1.74 6.65-2.89 7.99-3.45 3.8-1.6 4.59-1.88 5.1-1.89.11 0 .37.03.54.17.14.12.18.28.2.45-.01.06.01.24 0 .45z"/></svg>
@@ -1656,7 +1771,7 @@
           </div>
           <div class="hero__photo-area reveal" style="transition-delay: 0.15s">
             <div class="hero__photo-placeholder">
-              <img src="img/yulia-portrait.jpg" alt="Юлия — основатель проекта, помощь с военным учётом в Израиле" loading="eager">
+              <img src="img/yulia-portrait.jpg" alt="Юлия — основатель проекта, помощь с военным учётом в Израиле" loading="eager" width="600" height="800">
             </div>
             <div class="hero__photo-caption">
               <p>&laquo;Я не адвокат. Но&nbsp;я&nbsp;прошла через это сама.&raquo;</p>
@@ -1683,7 +1798,7 @@
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
             </div>
             <h3>&laquo;Проверил через МВД — сказали, всё чисто&raquo;</h3>
-            <p>Вы позвонили в&nbsp;МВД Израиля или проверили онлайн, и&nbsp;вам подтвердили: запретов на выезд нет. Но МВД не&nbsp;видит базу ЦАХАЛа. Это две разные системы. Человек летит спокойно — а&nbsp;в&nbsp;аэропорту узнаёт, что он дезертир. Именно так произошло со мной. Если у&nbsp;вас есть израильское гражданство и&nbsp;вы не&nbsp;служили — &laquo;всё чисто&raquo; от&nbsp;МВД ещё ничего не&nbsp;значит.</p>
+            <p>Вы позвонили в&nbsp;МВД Израиля или проверили онлайн, и&nbsp;вам подтвердили: запретов на выезд нет. Но МВД не&nbsp;видит базу ЦАХАЛа. Это две разные системы. Человек летит спокойно — а&nbsp;в&nbsp;аэропорту узнаёт, что он дезертир — Израиль внёс его в&nbsp;базу ещё годы назад. Именно так произошло со мной. Если у&nbsp;вас есть израильское гражданство и&nbsp;вы не&nbsp;служили — &laquo;всё чисто&raquo; от&nbsp;МВД ещё ничего не&nbsp;значит.</p>
           </article>
 
           <article class="who__card reveal" style="transition-delay: 0.08s">
@@ -1856,7 +1971,7 @@
           <!-- Photo: military court -->
           <div class="story__photo story__photo--court reveal">
             <div class="story__photo-placeholder">
-              <img src="img/military-court.jpg" alt="Здание военного суда в Израиле — колючая проволока, забор, КПП" loading="lazy">
+              <img src="img/military-court.jpg" alt="Здание военного суда в Израиле — колючая проволока, забор, КПП" loading="lazy" width="680" height="383">
             </div>
             <p class="story__photo-caption">Военный суд. Сюда привозят тех, кого задержали в аэропорту.</p>
           </div>
@@ -1889,7 +2004,7 @@
           <!-- Photo: prison exit -->
           <div class="story__photo story__photo--freedom reveal">
             <div class="story__photo-placeholder">
-              <img src="img/yulia-prison-exit.jpg" alt="Юлия — момент выхода из военной тюрьмы в Израиле" loading="lazy">
+              <img src="img/yulia-prison-exit.jpg" alt="Юлия — момент выхода из военной тюрьмы в Израиле" loading="lazy" width="520" height="693">
             </div>
             <p class="story__photo-caption">Момент выхода из военной тюрьмы. Тот самый день.</p>
           </div>
@@ -1933,7 +2048,7 @@
 
           <div class="testimonials__card reveal">
             <div class="testimonials__avatar">
-              <!-- REPLACE: CLIENT PHOTO -->
+
               <span>А.М.</span>
             </div>
             <div class="testimonials__content">
@@ -1945,7 +2060,7 @@
 
           <div class="testimonials__card reveal">
             <div class="testimonials__avatar">
-              <!-- REPLACE: CLIENT PHOTO -->
+
               <span>К.Л.</span>
             </div>
             <div class="testimonials__content">
@@ -1957,7 +2072,7 @@
 
           <div class="testimonials__card reveal">
             <div class="testimonials__avatar">
-              <!-- REPLACE: CLIENT PHOTO -->
+
               <span>Д.Р.</span>
             </div>
             <div class="testimonials__content">
@@ -1969,7 +2084,7 @@
 
           <div class="testimonials__card reveal">
             <div class="testimonials__avatar">
-              <!-- REPLACE: CLIENT PHOTO -->
+
               <span>М.С.</span>
             </div>
             <div class="testimonials__content">
@@ -2139,7 +2254,7 @@
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C6E63" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
             </div>
             <h3>Говорим на вашем языке</h3>
-            <p>Русский, иврит, английский. Вы объясняете ситуацию на том языке, на котором вам удобно. Мы переводим это в&nbsp;юридические действия на иврите. Никакого &laquo;найдите переводчика&raquo; — работаем напрямую.</p>
+            <p>Русскоговорящие специалисты: консультация на&nbsp;русском языке, иврите, английском. Вы объясняете ситуацию так, как вам удобно. Мы переводим это в&nbsp;юридические действия на иврите. Никакого &laquo;найдите переводчика&raquo; — работаем напрямую.</p>
           </article>
 
           <article class="trust-card reveal" style="transition-delay: 0.32s">
@@ -2169,7 +2284,7 @@
 
           <div class="team__card team__card--founder reveal">
             <div class="team__photo">
-              <img src="img/yulia-portrait.jpg" alt="Юлия — основатель проекта" loading="lazy">
+              <img src="img/yulia-portrait.jpg" alt="Юлия — основатель проекта" loading="lazy" width="120" height="120">
             </div>
             <h3 class="team__name">Юлия</h3>
             <p class="team__role">Основатель &middot; Ваш первый контакт</p>
@@ -2178,7 +2293,7 @@
 
           <div class="team__card reveal">
             <div class="team__photo">
-              <img src="img/lawyer-ak.jpg" alt="Адвокат А.К. — старший военный адвокат, бывший прокурор" loading="lazy">
+              <img src="img/lawyer-ak.jpg" alt="Адвокат А.К. — старший военный адвокат, бывший прокурор" loading="lazy" width="120" height="120">
             </div>
             <h3 class="team__name">Адвокат А.&thinsp;К.</h3>
             <p class="team__role">Старший военный адвокат</p>
@@ -2187,7 +2302,7 @@
 
           <div class="team__card reveal">
             <div class="team__photo">
-              <img src="img/lawyer-dl.jpg" alt="Адвокат Д.Л. — военный адвокат, специалист по экстренным делам" loading="lazy">
+              <img src="img/lawyer-dl.jpg" alt="Адвокат Д.Л. — военный адвокат, специалист по экстренным делам" loading="lazy" width="120" height="120">
             </div>
             <h3 class="team__name">Адвокат Д.&thinsp;Л.</h3>
             <p class="team__role">Военный адвокат &middot; Специалист по&nbsp;экстренным делам</p>
@@ -2329,6 +2444,110 @@
             </div>
           </div>
 
+          <!-- FAQ 9 -->
+          <div class="faq-item reveal">
+            <button class="faq-item__question" aria-expanded="false">
+              <span>Есть ли срок давности по дезертирству из ЦАХАЛа?</span>
+              <span class="faq-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-item__answer" role="region">
+              <div class="faq-item__answer-inner">
+                <p>Нет. В&nbsp;Израиле нет срока давности по&nbsp;воинским преступлениям. Даже если вы&nbsp;уехали 20&nbsp;лет назад и&nbsp;ни&nbsp;разу не&nbsp;получали повестку&nbsp;&mdash; статус дезертира остаётся в&nbsp;базе ЦАХАЛа навсегда. Именно поэтому важно проверить и&nbsp;решить вопрос заранее, а&nbsp;не&nbsp;ждать задержания в&nbsp;аэропорту.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 10 -->
+          <div class="faq-item reveal">
+            <button class="faq-item__question" aria-expanded="false">
+              <span>Могут ли задержать при транзите через Израиль?</span>
+              <span class="faq-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-item__answer" role="region">
+              <div class="faq-item__answer-inner">
+                <p>Да, если вы&nbsp;проходите паспортный контроль с&nbsp;израильским паспортом. Транзит без выхода из&nbsp;транзитной зоны безопасен, но&nbsp;если ваш рейс предполагает прохождение пограничного контроля&nbsp;&mdash; вас проверят по&nbsp;базе ЦАХАЛа. Рекомендуем проверить статус до&nbsp;покупки билетов.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 11 -->
+          <div class="faq-item reveal">
+            <button class="faq-item__question" aria-expanded="false">
+              <span>В каком возрасте уже не призовут в армию Израиля?</span>
+              <span class="faq-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-item__answer" role="region">
+              <div class="faq-item__answer-inner">
+                <p>Мужчины освобождаются от&nbsp;призыва после 28&nbsp;лет при&nbsp;условии, что&nbsp;они&nbsp;непрерывно жили за&nbsp;пределами Израиля. Женщины&nbsp;&mdash; после 26. Но&nbsp;это&nbsp;не&nbsp;означает автоматическое снятие статуса дезертира. Даже после этого возраста проблема в&nbsp;базе данных остаётся&nbsp;&mdash; её&nbsp;нужно решать официально.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 12 -->
+          <div class="faq-item reveal">
+            <button class="faq-item__question" aria-expanded="false">
+              <span>Влияет ли статус дезертира на получение загранпаспорта или гражданство?</span>
+              <span class="faq-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-item__answer" role="region">
+              <div class="faq-item__answer-inner">
+                <p>Статус дезертира может создать сложности при&nbsp;обновлении израильского паспорта (даркон) в&nbsp;консульстве. В&nbsp;некоторых случаях консульство отказывает в&nbsp;выдаче нового паспорта до&nbsp;урегулирования военного статуса. На&nbsp;само гражданство это&nbsp;не&nbsp;влияет&nbsp;&mdash; оно&nbsp;не&nbsp;отменяется.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 13 -->
+          <div class="faq-item reveal">
+            <button class="faq-item__question" aria-expanded="false">
+              <span>Что будет, если не явиться на военный трибунал?</span>
+              <span class="faq-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-item__answer" role="region">
+              <div class="faq-item__answer-inner">
+                <p>Неявка на&nbsp;военный трибунал&nbsp;&mdash; это&nbsp;отдельное правонарушение. Суд может вынести решение заочно, и&nbsp;при&nbsp;следующем въезде в&nbsp;Израиль вас задержат и&nbsp;доставят в&nbsp;суд принудительно. Если вам назначен трибунал&nbsp;&mdash; критически важно иметь адвоката, который может представлять ваши интересы.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              <span>Можно ли прилететь в Израиль, если не служил в армии?</span>
+              <span class="faq-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-item__answer" role="region">
+              <div class="faq-item__answer-inner">
+                <p>Можно, но с&nbsp;рисками. Если у&nbsp;вас есть израильское гражданство и&nbsp;вы не&nbsp;прошли армию&nbsp;&mdash; в&nbsp;базе ЦАХАЛа может стоять статус дезертира. Это не&nbsp;значит, что вас обязательно задержат, но проверка на&nbsp;паспортном контроле покажет вашу военную историю. Результат зависит от&nbsp;возраста, даты получения гражданства и&nbsp;текущего статуса. Единственный способ лететь спокойно&nbsp;&mdash; проверить статус заранее через военного адвоката.</p>
+                <a href="https://t.me/juli_x11?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81" class="faq-item__answer-cta" target="_blank" rel="noopener noreferrer">Напишите — проверим бесплатно до покупки билета &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              <span>Как проверить статус в ЦАХАЛе из-за границы?</span>
+              <span class="faq-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-item__answer" role="region">
+              <div class="faq-item__answer-inner">
+                <p>Проверить статус в&nbsp;ЦАХАЛе можно удалённо, не&nbsp;приезжая в&nbsp;Израиль. Это делается через адвоката с&nbsp;допуском к&nbsp;военным базам данных. МВД и&nbsp;консульства не&nbsp;имеют доступа к&nbsp;армейской системе&nbsp;&mdash; только ЦАХАЛ. Мы отправляем официальный запрос, получаем ответ за&nbsp;1-3&nbsp;дня и&nbsp;сообщаем, есть&nbsp;ли отметка о&nbsp;призыве, дезертирстве или открытое дело.</p>
+                <a href="https://t.me/juli_x11?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81" class="faq-item__answer-cta" target="_blank" rel="noopener noreferrer">Напишите — запустим проверку без вашего присутствия &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              <span>Как снять статус дезертира Израиль присвоил?</span>
+              <span class="faq-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-item__answer" role="region">
+              <div class="faq-item__answer-inner">
+                <p>Статус дезертира в&nbsp;Израиле снимается через обращение в&nbsp;военную прокуратуру с&nbsp;помощью адвоката. Процесс: проверка текущего статуса в&nbsp;базе ЦАХАЛа, подготовка документов и&nbsp;обоснования, переговоры с&nbsp;прокуратурой. В&nbsp;большинстве случаев дело решается без суда&nbsp;&mdash; административным порядком. Срок: от&nbsp;2&nbsp;недель до&nbsp;2&nbsp;месяцев. Военная тюрьма Израиль назначает только в&nbsp;крайних случаях&nbsp;&mdash; при правильной защите этого можно избежать.</p>
+                <a href="https://t.me/juli_x11?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D1%81%D0%B2%D0%BE%D0%B9%20%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81%20%D0%B4%D0%BE%20%D0%BF%D1%80%D0%B8%D0%BB%D1%91%D1%82%D0%B0" class="faq-item__answer-cta" target="_blank" rel="noopener noreferrer">Разберём ваш случай бесплатно — напишите &rarr;</a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -2367,7 +2586,8 @@
           <li><a href="mailto:chinchin-co@mail.ru">chinchin-co@mail.ru</a></li>
         </ul>
         <p class="footer__copy">Юлия не является адвокатом. Юридические услуги оказываются адвокатами — бывшими военными прокурорами Израиля.</p>
-        <p style="margin-top: 16px; font-size: 0.8rem; color: var(--text-muted);">&copy; 2026 Юлия — Помощь с армией Израиля. Все права защищены.</p>
+        <p style="margin-top: 12px; font-size: 0.8rem; color: var(--text-muted);">Обновлено: <time datetime="2026-04-07">7 апреля 2026</time> | <a href="privacy.html" style="color: var(--text-muted); text-decoration: underline;">Политика конфиденциальности</a></p>
+        <p style="margin-top: 8px; font-size: 0.8rem; color: var(--text-muted);">&copy; 2026 Юлия — Помощь с армией Израиля. Все права защищены.</p>
       </div>
     </div>
   </footer>

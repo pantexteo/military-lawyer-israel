@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Sitemap: https://example.com/sitemap.xml
+
+User-agent: Yandex
+Allow: /
+Host: https://example.com
+Sitemap: https://example.com/sitemap.xml
+
+User-agent: Mail.Ru
+Allow: /
