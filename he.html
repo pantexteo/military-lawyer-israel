@@ -36,10 +36,23 @@
   <meta name="twitter:title" content="עצרו אותך בנמל התעופה בישראל? עורך דין צבאי — עזרה">
   <meta name="twitter:description" content="בדיקת סטטוס בצה&quot;ל חינם. עורכי דין צבאיים — תובעים צבאיים לשעבר.">
 
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=REPLACE_GA4_ID"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','REPLACE_GA4_ID');</script>
+
+  <!-- Яндекс.Метрика -->
+  <script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(REPLACE_METRIKA_ID,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/REPLACE_METRIKA_ID" style="position:absolute;left:-9999px;" alt=""></div></noscript>
+
+  <!-- Hero image preload -->
+  <link rel="preload" as="image" href="img/yulia-portrait.jpg">
+
   <!-- Fonts: Outfit (display) + DM Sans (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 
   <!-- JSON-LD: FAQPage -->
   <script type="application/ld+json">
@@ -67,22 +80,52 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": "LegalService",
     "name": "יוליה — עזרה עם הצבא בישראל",
     "description": "בדיקת סטטוס צבאי בצה\"ל, עזרה במעצר בנמל התעופה, הסרת סטטוס עריק. עובדים עם עורכי דין צבאיים — תובעים צבאיים לשעבר.",
     "url": "https://example.com/he.html",
+    "image": "https://example.com/img/yulia-portrait.jpg",
+    "priceRange": "בדיקת סטטוס חינם, המשך לפי מצב",
     "areaServed": [
       {"@type": "Country", "name": "Israel"},
-      {"@type": "Country", "name": "Russia"}
+      {"@type": "Country", "name": "Russia"},
+      {"@type": "Country", "name": "Germany"},
+      {"@type": "Country", "name": "United States"}
     ],
     "knowsLanguage": ["he", "ru", "en"],
     "founder": {
       "@type": "Person",
       "name": "יוליה",
-      "jobTitle": "מייסדת"
+      "jobTitle": "מייסדת",
+      "description": "עברה באופן אישי מעצר בנמל התעופה בן גוריון וכלא צבאי. עכשיו עוזרת לאחרים."
     },
-    "serviceType": ["בדיקת סטטוס צבאי", "הסרת סטטוס עריק", "עזרה במעצר בנמל התעופה", "בית דין צבאי"],
-    "availableLanguage": ["Hebrew", "Russian", "English"]
+    "serviceType": ["בדיקת סטטוס צבאי בצה\"ל", "הסרת סטטוס עריק", "עזרה במעצר בנמל התעופה", "ייצוג בבית דין צבאי", "צבא ישראל לעולים — ייעוץ"],
+    "availableLanguage": ["Hebrew", "Russian", "English"],
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "availableLanguage": ["Russian", "Hebrew", "English"],
+      "url": "https://t.me/juli_x11"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "ראשי", "item": "https://example.com/he.html"},
+      {"@type": "ListItem", "position": 2, "name": "עזרה עם הצבא בישראל", "item": "https://example.com/he.html#hero"},
+      {"@type": "ListItem", "position": 3, "name": "שאלות נפוצות", "item": "https://example.com/he.html#faq"}
+    ]
   }
   </script>
 
@@ -98,28 +141,40 @@
       "reviewCount": "4",
       "bestRating": "5"
     },
+    "logo": "https://example.com/img/yulia-portrait.jpg",
+    "sameAs": ["https://t.me/juli_x11"],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "availableLanguage": ["Russian", "Hebrew", "English"],
+      "url": "https://t.me/juli_x11"
+    },
     "review": [
       {
         "@type": "Review",
         "author": {"@type": "Person", "name": "אלכסיי"},
+        "datePublished": "2025-11-15",
         "reviewRating": {"@type": "Rating", "ratingValue": "5"},
         "reviewBody": "עצרו אותי בבן גוריון, לא הבנתי מה קורה. יוליה ענתה בלילה, עורך הדין הגיע בבוקר. תוך יומיים הייתי חופשי."
       },
       {
         "@type": "Review",
         "author": {"@type": "Person", "name": "קרינה"},
+        "datePublished": "2026-01-22",
         "reviewRating": {"@type": "Rating", "ratingValue": "5"},
         "reviewBody": "בדקו את הסטטוס לפני הנסיעה — התברר שאני רשומה כעריקה. הסירו את הסטטוס תוך שלושה שבועות, טסתי בשקט."
       },
       {
         "@type": "Review",
         "author": {"@type": "Person", "name": "דמיטרי"},
+        "datePublished": "2026-02-10",
         "reviewRating": {"@type": "Rating", "ratingValue": "5"},
         "reviewBody": "איים עליי תיק פלילי, בית דין צבאי. עורך הדין השיג הפסקת רדיפה. תודה ענקית לצוות."
       },
       {
         "@type": "Review",
         "author": {"@type": "Person", "name": "מרינה"},
+        "datePublished": "2026-03-05",
         "reviewRating": {"@type": "Rating", "ratingValue": "5"},
         "reviewBody": "הבן קיבל אזרחות, פחדתי עליו. בדקו — אכן הייתה בעיה. פתרו הכל לפני הנסיעה."
       }
@@ -1643,6 +1698,8 @@
     }
   </style>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x2696;&#xFE0F;</text></svg>">
+  <link rel="apple-touch-icon" href="img/yulia-portrait.jpg">
+  <noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
 </head>
 <body>
   <a href="#hero" class="skip-link">דלג לתוכן</a>
@@ -2481,6 +2538,7 @@
           <li><a href="mailto:chinchin-co@mail.ru">chinchin-co@mail.ru</a></li>
         </ul>
         <p class="footer__copy">יוליה אינה עורכת דין. שירותים משפטיים ניתנים על ידי עורכי דין — תובעים צבאיים לשעבר של ישראל.</p>
+        <p style="margin-top: 12px; font-size: 0.8rem; color: var(--text-muted);">עודכן: <time datetime="2026-04-07">7 באפריל 2026</time> | <a href="privacy.html" style="color: var(--text-muted); text-decoration: underline;">מדיניות פרטיות</a></p>
         <p style="margin-top: 16px; font-size: 0.8rem; color: var(--text-muted);">&copy; 2026 יוליה — עזרה עם הצבא בישראל. כל הזכויות שמורות.</p>
       </div>
     </div>
