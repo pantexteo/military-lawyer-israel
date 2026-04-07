@@ -91,4 +91,28 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://military-lawyer-israel.vercel.app/bnej-mehagrym-cahala.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://military-lawyer-israel.vercel.app/bnej-mehagrym-cahala.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://military-lawyer-israel.vercel.app/bnej-mehagrym-cahala.html"/>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://military-lawyer-israel.vercel.app/miluim-cahala.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://military-lawyer-israel.vercel.app/miluim-cahala.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://military-lawyer-israel.vercel.app/miluim-cahala.html"/>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://military-lawyer-israel.vercel.app/vernut-sya-zhit-v-izrail-cahala.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://military-lawyer-israel.vercel.app/vernut-sya-zhit-v-izrail-cahala.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://military-lawyer-israel.vercel.app/vernut-sya-zhit-v-izrail-cahala.html"/>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
