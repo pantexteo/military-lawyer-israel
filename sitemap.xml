@@ -35,4 +35,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://military-lawyer-israel.vercel.app/voennyj-tribunal-izrail.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://military-lawyer-israel.vercel.app/voennyj-tribunal-izrail.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://military-lawyer-israel.vercel.app/voennyj-tribunal-izrail.html"/>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
