@@ -67,4 +67,28 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://military-lawyer-israel.vercel.app/izrailtyanin-za-rubezhom-cahala.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://military-lawyer-israel.vercel.app/izrailtyanin-za-rubezhom-cahala.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://military-lawyer-israel.vercel.app/izrailtyanin-za-rubezhom-cahala.html"/>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://military-lawyer-israel.vercel.app/snyatie-statusa-dezertira-cahala.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://military-lawyer-israel.vercel.app/snyatie-statusa-dezertira-cahala.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://military-lawyer-israel.vercel.app/snyatie-statusa-dezertira-cahala.html"/>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://military-lawyer-israel.vercel.app/ne-znal-ob-armii-izrail.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://military-lawyer-israel.vercel.app/ne-znal-ob-armii-izrail.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://military-lawyer-israel.vercel.app/ne-znal-ob-armii-izrail.html"/>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
