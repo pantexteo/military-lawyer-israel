@@ -3,7 +3,7 @@
 Автоматическое обновление новостей на tzahal-advokat.com
 
 1. Exa AI ищет свежие новости о ЦАХАЛе и призыве
-2. Nemotron 49B генерирует полноценную статью (600-800 слов) + FAQ
+2. Kimi K2.5 (через NVIDIA NIM) генерирует полноценную статью (600-800 слов) + FAQ
 3. Создаёт HTML-страницу в /news/
 4. Обновляет карточки на главной (ссылки на НАШИ статьи)
 5. Обновляет sitemap.xml
@@ -55,7 +55,7 @@ SITE_URL = "https://tzahal-advokat.com"
 
 # NVIDIA NIM
 NVIDIA_BASE_URL = "https://integrate.api.nvidia.com/v1"
-MODEL_NAME = "nvidia/llama-3.3-nemotron-super-49b-v1.5"
+MODEL_NAME = "moonshotai/kimi-k2.5"
 
 SEARCH_QUERIES = [
     "ЦАХАЛ дезертир уклонист призыв 2026",
@@ -637,7 +637,7 @@ def main():
     candidates = fetch_news(exa_key)
     print(f"  Found {len(candidates)} candidates")
 
-    print("Step 2: Generating articles via Nemotron 49B (NVIDIA NIM)...")
+    print("Step 2: Generating articles via Kimi K2.5 (NVIDIA NIM)...")
     client = OpenAI(base_url=NVIDIA_BASE_URL, api_key=nvidia_key)
 
     articles = []  # (article_data, news_item)

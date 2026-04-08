@@ -205,4 +205,22 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://tzahal-advokat.com/news/uklonisty-tsahal-81-tysyacha-dmitro-chekalin.html</loc>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tzahal-advokat.com/news/uvelichenie-sroka-sluzhby-tsahal-2026.html</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tzahal-advokat.com/news/zakon-o-prizyve-religiozny-sionizm-2026.html</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
