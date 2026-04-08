@@ -21,11 +21,12 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install exa-py
+        run: pip install exa-py anthropic
 
       - name: Run news update script
         env:
           EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python scripts/update_news.py
 
       - name: Check for changes
