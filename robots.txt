@@ -4,8 +4,9 @@ Sitemap: https://tzahal-advokat.com/sitemap.xml
 
 User-agent: Yandex
 Allow: /
-Host: https://tzahal-advokat.com
+Host: tzahal-advokat.com
 Sitemap: https://tzahal-advokat.com/sitemap.xml
 
 User-agent: Mail.Ru
 Allow: /
+Sitemap: https://tzahal-advokat.com/sitemap.xml
