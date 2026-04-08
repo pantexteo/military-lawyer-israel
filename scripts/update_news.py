@@ -3,18 +3,31 @@
 Автоматическое обновление блока новостей на tzahal-advokat.com
 
 Шаг 1: Exa AI ищет свежие новости о ЦАХАЛе и призыве
-Шаг 2: Claude переписывает summary с SEO-ключевиками для русской аудитории
+Шаг 2: Kimi K2.5 (через NVIDIA NIM) переписывает summary с SEO-ключевиками
 Шаг 3: Обновляет index.html между маркерами NEWS_BLOCK_START/END
 
 Запуск:
-  EXA_API_KEY=xxx ANTHROPIC_API_KEY=sk-ant-xxx python3 scripts/update_news.py
+  EXA_API_KEY=xxx NVIDIA_API_KEY=nvapi-xxx python3 scripts/update_news.py
+
+Или с .env файлом:
+  python3 scripts/update_news.py
 """
 
 import os
 import sys
-import json
 from datetime import datetime, timezone, timedelta
+from typing import Optional
 from urllib.parse import urlparse
+
+# Загрузка .env файла (если есть)
+env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".env")
+if os.path.exists(env_path):
+    with open(env_path) as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                key, val = line.split("=", 1)
+                os.environ.setdefault(key.strip(), val.strip())
 
 try:
     from exa_py import Exa
@@ -23,17 +36,21 @@ except ImportError:
     sys.exit(1)
 
 try:
-    import anthropic
+    from openai import OpenAI
 except ImportError:
-    print("ERROR: anthropic not installed. Run: pip install anthropic")
+    print("ERROR: openai not installed. Run: pip install openai")
     sys.exit(1)
 
 # ---- Настройки ----
-HTML_FILE = "deploy/index.html"
+HTML_FILE = "index.html"
 START_MARKER = "<!-- NEWS_BLOCK_START -->"
 END_MARKER = "<!-- NEWS_BLOCK_END -->"
 NEWS_COUNT = 5
 ISRAEL_TZ = timezone(timedelta(hours=3))
+
+# NVIDIA NIM + Kimi K2.5
+NVIDIA_BASE_URL = "https://integrate.api.nvidia.com/v1"
+MODEL_NAME = "nvidia/llama-3.3-nemotron-super-49b-v1.5"
 
 # SEO-ключевики для органичного вплетения в текст
 SEO_KEYWORDS = [
@@ -51,7 +68,7 @@ SEARCH_QUERIES = [
     "мобилизация Израиль харедим резервисты призыв",
 ]
 
-# Домены, которые НЕ подходят (не русскоязычная аудитория или нерелевантно)
+# Домены, которые НЕ подходят
 BLOCKED_DOMAINS = ["haaretz.com", "jpost.com", "timesofisrael.com", "ynetnews.com"]
 
 CARD_TEMPLATE = """\
@@ -143,57 +160,57 @@ def fetch_news(exa_key: str) -> list[dict]:
             response = exa.search_and_contents(
                 query,
                 num_results=5,
-                use_autoprompt=True,
                 text={"max_characters": 500},
-                highlights={"num_sentences": 2},
                 start_published_date=(
                     datetime.now(timezone.utc) - timedelta(days=90)
                 ).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                type="news",
+                type="auto",
             )
             for item in response.results:
                 if item.url in seen_urls or is_blocked(item.url):
                     continue
                 seen_urls.add(item.url)
                 raw_text = ""
-                if hasattr(item, "highlights") and item.highlights:
-                    raw_text = " ".join(item.highlights[:2])
-                elif hasattr(item, "text") and item.text:
+                if hasattr(item, "text") and item.text:
                     raw_text = item.text[:500]
                 results.append({
                     "url": item.url,
                     "title": item.title or "",
                     "date": item.published_date or "",
                     "raw_text": raw_text,
-                    "summary": "",  # заполнится Claude
+                    "summary": "",
                 })
         except Exception as e:
             print(f"WARNING: Exa query '{query}' failed: {e}")
 
     results.sort(key=lambda x: x["date"], reverse=True)
-    return results[:NEWS_COUNT + 3]  # берём с запасом — некоторые могут быть отфильтрованы
+    return results[:NEWS_COUNT + 3]
 
 
-def seo_rewrite(claude: anthropic.Anthropic, item: dict, keyword: str) -> str | None:
-    """Шаг 2: Claude переписывает summary с SEO-ключевиком. Возвращает None если нерелевантно."""
+def seo_rewrite(client: OpenAI, item: dict, keyword: str) -> Optional[str]:
+    """Шаг 2: Kimi K2.5 переписывает summary с SEO-ключевиком."""
     prompt = SEO_PROMPT.format(
         title=item["title"],
         text=item["raw_text"][:400],
         keyword=keyword,
     )
     try:
-        message = claude.messages.create(
-            model="claude-haiku-3-5",
-            max_tokens=200,
+        response = client.chat.completions.create(
+            model=MODEL_NAME,
+            max_tokens=2048,
+            temperature=0.7,
             messages=[{"role": "user", "content": prompt}],
         )
-        result = message.content[0].text.strip()
+        content = response.choices[0].message.content
+        if content is None:
+            print(f"  NOTE: Model returned empty content for '{item['title'][:40]}'")
+            return truncate(item["raw_text"], 140) or None
+        result = content.strip()
         if result == "SKIP" or result.startswith("SKIP"):
             return None
         return result
     except Exception as e:
-        print(f"WARNING: Claude rewrite failed for '{item['title'][:40]}': {e}")
-        # Fallback — используем raw_text обрезанный
+        print(f"WARNING: Kimi rewrite failed for '{item['title'][:40]}': {e}")
         return truncate(item["raw_text"], 140) or None
 
 
@@ -241,13 +258,13 @@ def update_html(html_path: str, new_cards_html: str) -> bool:
 
 def main():
     exa_key = os.environ.get("EXA_API_KEY")
-    anthropic_key = os.environ.get("ANTHROPIC_API_KEY")
+    nvidia_key = os.environ.get("NVIDIA_API_KEY")
 
     if not exa_key:
         print("ERROR: EXA_API_KEY not set")
         sys.exit(1)
-    if not anthropic_key:
-        print("ERROR: ANTHROPIC_API_KEY not set")
+    if not nvidia_key:
+        print("ERROR: NVIDIA_API_KEY not set")
         sys.exit(1)
 
     now = datetime.now(ISRAEL_TZ).strftime("%Y-%m-%d %H:%M")
@@ -255,8 +272,11 @@ def main():
     candidates = fetch_news(exa_key)
     print(f"  Found {len(candidates)} candidates")
 
-    print("Step 2: SEO rewrite via Claude...")
-    claude = anthropic.Anthropic(api_key=anthropic_key)
+    print(f"Step 2: SEO rewrite via Nemotron 49B (NVIDIA NIM)...")
+    client = OpenAI(
+        base_url=NVIDIA_BASE_URL,
+        api_key=nvidia_key,
+    )
     final_items = []
     keyword_idx = 0
 
@@ -264,14 +284,14 @@ def main():
         if len(final_items) >= NEWS_COUNT:
             break
         keyword = SEO_KEYWORDS[keyword_idx % len(SEO_KEYWORDS)]
-        summary = seo_rewrite(claude, item, keyword)
+        summary = seo_rewrite(client, item, keyword)
         if summary is None:
             print(f"  SKIP (irrelevant): {item['title'][:50]}")
             continue
         item["summary"] = summary
         final_items.append(item)
         keyword_idx += 1
-        print(f"  OK [{keyword[:20]}…]: {item['title'][:50]}")
+        print(f"  OK [{keyword[:20]}]: {item['title'][:50]}")
 
     if not final_items:
         print("WARNING: No relevant news found, keeping existing content")
