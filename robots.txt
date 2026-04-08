@@ -1,11 +1,11 @@
 User-agent: *
 Allow: /
-Sitemap: https://military-lawyer-israel.vercel.app/sitemap.xml
+Sitemap: https://tzahal-advokat.com/sitemap.xml
 
 User-agent: Yandex
 Allow: /
-Host: https://military-lawyer-israel.vercel.app
-Sitemap: https://military-lawyer-israel.vercel.app/sitemap.xml
+Host: https://tzahal-advokat.com
+Sitemap: https://tzahal-advokat.com/sitemap.xml
 
 User-agent: Mail.Ru
 Allow: /
