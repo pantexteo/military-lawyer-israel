@@ -1,0 +1,46 @@
+name: Update News Articles
+
+on:
+  schedule:
+    # Пн, Ср, Пт в 8:00 по Израилю (5:00 UTC)
+    - cron: '0 5 * * 1,3,5'
+  workflow_dispatch: # ручной запуск из GitHub UI
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install exa-py openai
+
+      - name: Run news update script
+        env:
+          EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+        run: python scripts/update_news.py
+
+      - name: Commit and push new articles
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          # Проверяем есть ли изменения
+          if git diff --staged --quiet; then
+            echo "No new articles to commit"
+          else
+            git commit -m "feat: auto-update news articles $(date +%Y-%m-%d)
+
+          Co-Authored-By: Kimi K2.5 via NVIDIA NIM <noreply@nvidia.com>"
+            git push
+          fi
