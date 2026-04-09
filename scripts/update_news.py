@@ -106,6 +106,14 @@ ARTICLE_PROMPT = """\
     {{
       "question": "Третий вопрос",
       "answer": "Ответ"
+    }},
+    {{
+      "question": "Четвёртый вопрос",
+      "answer": "Ответ"
+    }},
+    {{
+      "question": "Пятый вопрос",
+      "answer": "Ответ"
     }}
   ],
   "card_summary": "Описание для карточки на главной (2 предложения, до 150 символов)",
@@ -118,7 +126,7 @@ ARTICLE_PROMPT = """\
 3. Объясни что эта новость значит для человека, который числится дезертиром/уклонистом или боится лететь в Израиль.
 4. Упомяни Юлию и проект естественно (не рекламно): "Мы проверяем статус бесплатно" или "Если вас это касается — напишите нам".
 5. Используй конкретику из новости: даты, цифры, имена, законы.
-6. FAQ — вопросы, которые реально задал бы испуганный человек.
+6. FAQ — 5 вопросов, которые реально задал бы испуганный человек.
 7. Slug — транслитерация (prizyv-reservistov-2026), без кириллицы, через дефис.
 8. Если новость нерелевантна аудитории — верни: {{"skip": true}}"""
 
@@ -176,6 +184,39 @@ def escape_html(text: str) -> str:
 
 def slug_exists(slug: str) -> bool:
     return os.path.exists(os.path.join(NEWS_DIR, f"{slug}.html"))
+
+
+# ---- Перелинковка: ситуационные страницы ----
+SITUATION_PAGES = [
+    {"url": "/dezertir-cahala.html", "title": "Дезертир ЦАХАЛ — что делать и как снять статус", "keywords": ["дезертир", "дезертирство", "самоволка", "сбежал"]},
+    {"url": "/dvojnoe-grazhdanstvo-armiya.html", "title": "Двойное гражданство и армия Израиля", "keywords": ["гражданство", "двойное", "паспорт"]},
+    {"url": "/repatriant-cahala.html", "title": "Репатриант и армия — что нужно знать", "keywords": ["репатриант", "алия", "олим", "репатриация"]},
+    {"url": "/miluim-cahala.html", "title": "Милуим — служба в резерве ЦАХАЛ", "keywords": ["резервист", "милуим", "резерв", "мобилизация"]},
+    {"url": "/proverit-voennyj-status-izrail.html", "title": "Как проверить свой военный статус в Израиле", "keywords": ["статус", "проверить", "проверка"]},
+    {"url": "/posledstviya-ukloneniya-cahala.html", "title": "Последствия уклонения от армии Израиля", "keywords": ["уклонист", "уклонение", "последствия", "штраф", "наказание"]},
+    {"url": "/ne-znal-ob-armii-izrail.html", "title": "Не знал об армии Израиля — что теперь", "keywords": ["не знал", "не знала", "не был в курсе"]},
+    {"url": "/izrailtyanin-za-rubezhom-cahala.html", "title": "Израильтянин за рубежом и армия", "keywords": ["за рубежом", "за границей", "уехал", "живу"]},
+]
+
+STATUS_CHECK_PAGE = {"url": "/proverit-voennyj-status-izrail.html", "title": "Как проверить свой военный статус в Израиле"}
+
+
+def get_related_pages(article_text: str, article_title: str) -> list:
+    """Возвращает топ-3 релевантных ситуационных страницы + всегда страницу проверки статуса."""
+    text_lower = (article_text + " " + article_title).lower()
+    scored = []
+    for page in SITUATION_PAGES:
+        # Не дублируем страницу проверки статуса — она добавляется отдельно
+        if page["url"] == STATUS_CHECK_PAGE["url"]:
+            continue
+        hits = sum(1 for kw in page["keywords"] if kw in text_lower)
+        if hits > 0:
+            scored.append((hits, page))
+    scored.sort(key=lambda x: x[0], reverse=True)
+    related = [page for _, page in scored[:3]]
+    # Всегда добавляем страницу проверки статуса как 4-ю ссылку
+    related.append(STATUS_CHECK_PAGE)
+    return related
 
 
 def fetch_news(exa_key: str) -> list:
@@ -300,6 +341,25 @@ def build_article_html(article: dict, item: dict) -> str:
             "name": faq["question"],
             "acceptedAnswer": {"@type": "Answer", "text": faq["answer"]}
         })
+
+    # Блок "Читайте по теме" — перелинковка на ситуационные страницы
+    full_text = article.get("lead", "") + " " + " ".join(
+        s.get("heading", "") + " " + s.get("text", "") for s in article.get("sections", [])
+    )
+    related_pages = get_related_pages(full_text, article["title"])
+    related_html = ""
+    if related_pages:
+        links_html = "\n".join(
+            f'            <li><a href="{p["url"]}" style="color:var(--accent);font-weight:500;font-size:1rem;line-height:1.6;">{escape_html(p["title"])}</a></li>'
+            for p in related_pages
+        )
+        related_html = f"""
+        <div style="margin-top:40px;padding:24px 28px;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--radius-md);">
+          <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--text-primary);margin-bottom:14px;">Читайте по теме</h3>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+{links_html}
+          </ul>
+        </div>"""
 
     faq_schema = json.dumps({
         "@context": "https://schema.org",
@@ -480,6 +540,8 @@ def build_article_html(article: dict, item: dict) -> str:
       <ol class="breadcrumb__list">
         <li><a href="/">Главная</a></li>
         <li style="color:var(--border-medium);">/</li>
+        <li><a href="/news/">Новости</a></li>
+        <li style="color:var(--border-medium);">/</li>
         <li style="color:var(--text-secondary);font-weight:500;">{escape_html(article["title"])}</li>
       </ol>
     </div>
@@ -505,8 +567,9 @@ def build_article_html(article: dict, item: dict) -> str:
 {sections_html}
 
         <div class="source-link">
-          Источник новости: <a href="{escape_html(item["url"])}" target="_blank" rel="noopener noreferrer">{escape_html(item["source"])}</a>
+          Источник новости: <a href="{escape_html(item["url"])}" target="_blank" rel="nofollow noopener">{escape_html(item["source"])}</a>
         </div>
+{related_html}
       </div>
     </section>
 
