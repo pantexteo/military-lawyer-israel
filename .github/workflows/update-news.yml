@@ -43,5 +43,6 @@ jobs:
             git commit -m "feat: auto-update news articles $(date +%Y-%m-%d)
 
           Co-Authored-By: Kimi K2.5 via NVIDIA NIM <noreply@nvidia.com>"
+            git pull --rebase origin main
             git push
           fi
