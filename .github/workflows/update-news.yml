@@ -43,6 +43,10 @@ jobs:
             git commit -m "feat: auto-update news articles $(date +%Y-%m-%d)
 
           Co-Authored-By: Kimi K2.5 via NVIDIA NIM <noreply@nvidia.com>"
-            git pull --rebase origin main
-            git push
+            # Retry push до 3 раз — на случай параллельных коммитов в main
+            for attempt in 1 2 3; do
+              git pull --rebase origin main && git push && break
+              echo "⚠️ Push attempt $attempt failed, retrying in 5s..."
+              sleep 5
+            done
           fi
