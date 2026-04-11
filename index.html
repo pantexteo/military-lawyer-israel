@@ -957,6 +957,66 @@
       line-height: 1.7;
     }
 
+    /* Risk Check CTA */
+    .risk-cta {
+      text-align: center;
+      padding: clamp(40px, 5vw, 56px) 0;
+      background: var(--bg-cream);
+      border-top: 1px solid var(--border-light);
+    }
+    .risk-cta__inner {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .risk-cta__label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .risk-cta__heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      line-height: 1.35;
+    }
+    .btn--risk {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 2px 12px rgba(184, 92, 56, 0.2);
+    }
+    .btn--risk:hover {
+      background: var(--accent-hover);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(184, 92, 56, 0.3);
+    }
+    .btn--risk svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    .risk-cta__sub {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
     /* Mid-CTA */
     .mid-cta {
       text-align: center;
@@ -1773,9 +1833,6 @@
               <span style="width:24px;height:24px;border-radius:50%;background:var(--teal);display:inline-flex;align-items:center;justify-content:center;font-size:12px;color:white;">&#10003;</span>
               Уже помогли <strong style="color:var(--text-primary);">120+</strong> людям в 2025–2026
             </p>
-            <a href="/proverka.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:10px 20px;background:var(--bg-warm);border:1px solid var(--border);border-radius:8px;color:var(--text-primary);font-size:0.95rem;font-weight:500;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='var(--bg-linen)'" onmouseout="this.style.background='var(--bg-warm)'">
-              <span style="font-size:1.1em;">&#9888;</span> Оценить риск задержания — тест 2 минуты
-            </a>
             <p class="micro-copy">Конфиденциально. Отвечу лично в течение 2 часов. Без обязательств.</p>
           </div>
           <div class="hero__photo-area reveal" style="transition-delay: 0.15s">
@@ -1849,6 +1906,23 @@
             <h3>Мой ребёнок имеет гражданство&nbsp;&mdash; боюсь за&nbsp;него</h3>
             <p>Ваш сын или дочь получили гражданство в&nbsp;детстве. Вы&nbsp;хотите поехать семьёй, но&nbsp;не&nbsp;уверены, безопасно&nbsp;ли это для ребёнка. Проверим заранее&nbsp;&mdash; чтобы отпуск не&nbsp;превратился в&nbsp;кошмар.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         RISK CTA (after situations)
+         ============================================ -->
+    <section class="risk-cta reveal">
+      <div class="container">
+        <div class="risk-cta__inner">
+          <div class="risk-cta__label">Бесплатный тест</div>
+          <h2 class="risk-cta__heading">Узнали свою ситуацию?<br>Проверьте риск задержания за&nbsp;2&nbsp;минуты</h2>
+          <a href="/proverka.html" class="btn--risk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            Оценить свой риск
+          </a>
+          <p class="risk-cta__sub">Анонимно. Без регистрации. Результат сразу.</p>
         </div>
       </div>
     </section>
