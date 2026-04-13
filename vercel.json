@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/news.html",
+      "destination": "/news/",
+      "permanent": true
+    }
+  ]
+}
