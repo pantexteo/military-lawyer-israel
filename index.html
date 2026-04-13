@@ -1433,6 +1433,66 @@
     }
 
     /* ================================================
+       DESKTOP FLOATING CTA
+       ================================================ */
+    .desktop-cta {
+      display: none;
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 800;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: none;
+    }
+    .desktop-cta.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .desktop-cta__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 50px;
+      box-shadow: 0 4px 20px rgba(184, 92, 56, 0.35), 0 2px 8px rgba(0,0,0,0.1);
+      transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+    }
+    .desktop-cta__link:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 6px 28px rgba(184, 92, 56, 0.45), 0 3px 12px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
+    }
+    .desktop-cta__link:active {
+      transform: translateY(0);
+    }
+    .desktop-cta__link svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+      flex-shrink: 0;
+    }
+    @keyframes desktop-cta-pulse {
+      0% { box-shadow: 0 4px 20px rgba(184, 92, 56, 0.35), 0 2px 8px rgba(0,0,0,0.1), 0 0 0 0 rgba(184, 92, 56, 0.4); }
+      70% { box-shadow: 0 4px 20px rgba(184, 92, 56, 0.35), 0 2px 8px rgba(0,0,0,0.1), 0 0 0 12px rgba(184, 92, 56, 0); }
+      100% { box-shadow: 0 4px 20px rgba(184, 92, 56, 0.35), 0 2px 8px rgba(0,0,0,0.1), 0 0 0 0 rgba(184, 92, 56, 0); }
+    }
+    .desktop-cta__link.pulse {
+      animation: desktop-cta-pulse 1.5s ease-out 2;
+    }
+    @media (min-width: 769px) {
+      .desktop-cta { display: block; }
+    }
+
+    /* ================================================
        MOBILE BOTTOM BAR
        ================================================ */
     .mobile-bar {
@@ -1651,6 +1711,31 @@
       font-weight: 600;
       border-radius: 100px;
     }
+    .testimonials__card.hidden-review { display: none; }
+    .testimonials__grid.expanded .testimonials__card.hidden-review { display: flex; }
+    .testimonials__more {
+      display: flex;
+      justify-content: center;
+      margin-top: 28px;
+    }
+    .testimonials__more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: transparent;
+      border: 1.5px solid var(--border);
+      border-radius: 100px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .testimonials__more-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .testimonials__more-btn svg { width: 16px; height: 16px; transition: transform 0.3s; }
+    .testimonials__grid.expanded + .testimonials__more .testimonials__more-btn svg { transform: rotate(180deg); }
 
     @media (max-width: 768px) {
       .testimonials__grid {
@@ -2177,6 +2262,60 @@
             </div>
           </div>
 
+          <div class="testimonials__card reveal hidden-review">
+            <div class="testimonials__avatar">
+
+              <span>И.В.</span>
+            </div>
+            <div class="testimonials__content">
+              <p class="testimonials__quote">&laquo;У&nbsp;меня два гражданства&nbsp;&mdash; российское и&nbsp;израильское. Был уверен, что раз живу в&nbsp;России, армия меня не&nbsp;касается. Собрался лететь в&nbsp;Эйлат&nbsp;&mdash; Юлия проверила и&nbsp;нашла открытое дело. За&nbsp;месяц адвокаты всё закрыли, отпуск не&nbsp;сорвался.&raquo;</p>
+              <p class="testimonials__author">Игорь, 31 год, Москва</p>
+              <div class="testimonials__tag">Двойное гражданство&nbsp;&mdash; дело закрыто за&nbsp;месяц</div>
+            </div>
+          </div>
+
+          <div class="testimonials__card reveal hidden-review">
+            <div class="testimonials__avatar">
+
+              <span>Л.К.</span>
+            </div>
+            <div class="testimonials__content">
+              <p class="testimonials__quote">&laquo;Уехали из&nbsp;Израиля, когда мне было 12&nbsp;лет. В&nbsp;30&nbsp;решила навестить бабушку&nbsp;&mdash; и&nbsp;узнала, что числюсь уклонисткой. Юлия объяснила, что как бат&nbsp;мехагерет я&nbsp;имею право на&nbsp;особый порядок. Адвокат оформил освобождение за&nbsp;3&nbsp;недели.&raquo;</p>
+              <p class="testimonials__author">Лена, 30 лет, Киев</p>
+              <div class="testimonials__tag">Освобождение для бней мехагрим за&nbsp;3&nbsp;недели</div>
+            </div>
+          </div>
+
+          <div class="testimonials__card reveal hidden-review">
+            <div class="testimonials__avatar">
+
+              <span>Р.А.</span>
+            </div>
+            <div class="testimonials__content">
+              <p class="testimonials__quote">&laquo;Пришла повестка на&nbsp;милуим&nbsp;&mdash; а&nbsp;я&nbsp;уже 8&nbsp;лет живу в&nbsp;Германии. Паника, не&nbsp;знаю что делать, в&nbsp;интернете противоречивая информация. Юлия и&nbsp;адвокат разобрались за&nbsp;неделю: оформили тошав хозер, сняли обязательство по&nbsp;резерву.&raquo;</p>
+              <p class="testimonials__author">Роман, 36 лет, Берлин</p>
+              <div class="testimonials__tag">Снят с&nbsp;резервной службы за&nbsp;неделю</div>
+            </div>
+          </div>
+
+          <div class="testimonials__card reveal hidden-review">
+            <div class="testimonials__avatar">
+
+              <span>С.Б.</span>
+            </div>
+            <div class="testimonials__content">
+              <p class="testimonials__quote">&laquo;Репатриировались в&nbsp;2019, прожили год и&nbsp;вернулись в&nbsp;Россию. Думала, раз уехала&nbsp;&mdash; армия забыла. Через Юлию узнала, что у&nbsp;дочери статус дезертира. Адвокаты подготовили всё удалённо&nbsp;&mdash; дочь прилетела, прошла контроль без проблем.&raquo;</p>
+              <p class="testimonials__author">Светлана, 48 лет, Краснодар</p>
+              <div class="testimonials__tag">Статус дочери-репатриантки решён удалённо</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="testimonials__more" id="testimonials-more">
+          <button class="testimonials__more-btn" id="show-more-reviews" aria-expanded="false">
+            Ещё 4 истории
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
         </div>
       </div>
     </section>
@@ -2833,6 +2972,16 @@
   </div>
 
   <!-- ============================================
+       DESKTOP FLOATING CTA
+       ============================================ -->
+  <div class="desktop-cta" id="desktop-cta">
+    <a href="https://t.me/juli_x11?text=%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%B8%D1%82%D1%8C%20%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81%20%D1%83%D0%B4%D0%B0%D0%BB%D1%91%D0%BD%D0%BD%D0%BE" class="desktop-cta__link" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.2-.04-.28-.02-.12.03-2.02 1.28-5.69 3.77-.54.37-1.03.55-1.47.54-.48-.01-1.4-.27-2.09-.49-.84-.27-1.51-.42-1.45-.88.03-.24.37-.49 1.02-.74 3.99-1.74 6.65-2.89 7.99-3.45 3.8-1.6 4.59-1.88 5.1-1.89.11 0 .37.03.54.17.14.12.18.28.2.45-.01.06.01.24 0 .45z"/></svg>
+      Написать
+    </a>
+  </div>
+
+  <!-- ============================================
        JAVASCRIPT
        ============================================ -->
   <script>
@@ -2895,6 +3044,21 @@
       });
     })();
 
+    // ---- Show more reviews ----
+    (function() {
+      var btn = document.getElementById('show-more-reviews');
+      var grid = document.querySelector('.testimonials__grid');
+      if (!btn || !grid) return;
+      btn.addEventListener('click', function() {
+        var expanded = grid.classList.toggle('expanded');
+        btn.setAttribute('aria-expanded', expanded);
+        btn.firstChild.textContent = expanded ? 'Свернуть ' : 'Ещё 4 истории ';
+        if (expanded) {
+          grid.querySelectorAll('.hidden-review').forEach(function(el) { el.classList.add('visible'); });
+        }
+      });
+    })();
+
     // ---- FAQ accordion ----
     (function() {
       document.querySelectorAll('.faq-item__question').forEach(function(btn) {
@@ -2930,6 +3094,30 @@
           }
         });
       });
+    })();
+
+    // ---- Desktop floating CTA show/hide on scroll ----
+    (function() {
+      var cta = document.getElementById('desktop-cta');
+      if (!cta) return;
+      var link = cta.querySelector('.desktop-cta__link');
+      var shown = false;
+      var pulsed = false;
+
+      window.addEventListener('scroll', function() {
+        var shouldShow = window.scrollY > 500;
+        if (shouldShow !== shown) {
+          shown = shouldShow;
+          cta.classList.toggle('visible', shouldShow);
+          if (shouldShow && !pulsed && link) {
+            pulsed = true;
+            link.classList.add('pulse');
+            link.addEventListener('animationend', function() {
+              link.classList.remove('pulse');
+            }, { once: true });
+          }
+        }
+      }, { passive: true });
     })();
   </script>
 
