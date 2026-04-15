@@ -186,6 +186,16 @@
   <url>
     <loc>https://tzahal-advokat.com/ne-znal-ob-armii-izrail.html</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://tzahal-advokat.com/ne-znal-ob-armii-izrail.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://tzahal-advokat.com/ne-znal-ob-armii-izrail-he.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tzahal-advokat.com/ne-znal-ob-armii-izrail.html"/>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tzahal-advokat.com/ne-znal-ob-armii-izrail-he.html</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://tzahal-advokat.com/ne-znal-ob-armii-izrail-he.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tzahal-advokat.com/ne-znal-ob-armii-izrail.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tzahal-advokat.com/ne-znal-ob-armii-izrail.html"/>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -233,6 +243,16 @@
   <url>
     <loc>https://tzahal-advokat.com/vernut-sya-zhit-v-izrail-cahala.html</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://tzahal-advokat.com/vernut-sya-zhit-v-izrail-cahala.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://tzahal-advokat.com/vernut-sya-zhit-v-izrail-cahala-he.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tzahal-advokat.com/vernut-sya-zhit-v-izrail-cahala.html"/>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tzahal-advokat.com/vernut-sya-zhit-v-izrail-cahala-he.html</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://tzahal-advokat.com/vernut-sya-zhit-v-izrail-cahala-he.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tzahal-advokat.com/vernut-sya-zhit-v-izrail-cahala.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tzahal-advokat.com/vernut-sya-zhit-v-izrail-cahala.html"/>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -279,6 +299,16 @@
 
   <url>
     <loc>https://tzahal-advokat.com/posledstviya-ukloneniya-cahala.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tzahal-advokat.com/posledstviya-ukloneniya-cahala.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://tzahal-advokat.com/posledstviya-ukloneniya-cahala-he.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tzahal-advokat.com/posledstviya-ukloneniya-cahala.html"/>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tzahal-advokat.com/posledstviya-ukloneniya-cahala-he.html</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://tzahal-advokat.com/posledstviya-ukloneniya-cahala-he.html"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://tzahal-advokat.com/posledstviya-ukloneniya-cahala.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tzahal-advokat.com/posledstviya-ukloneniya-cahala.html"/>
     <lastmod>2026-04-15</lastmod>
