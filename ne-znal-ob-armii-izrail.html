@@ -828,5 +828,43 @@
       });
     })();
   </script>
+<script>
+  // cta_click_tracker_v1 — GA4 event tracking for Telegram + WhatsApp CTAs
+  (function() {
+    if (typeof gtag !== 'function') return;
+    var LOCATIONS = [
+      ['.emergency-bar', 'emergency_bar'],
+      ['.mobile-bar', 'mobile_bar'],
+      ['.desktop-cta', 'desktop_cta'],
+      ['.risk-cta', 'risk_cta'],
+      ['.story__cta', 'story_cta'],
+      ['.mid-cta', 'mid_cta'],
+      ['.steps__cta', 'steps_cta'],
+      ['.faq-item__answer-cta', 'faq_answer'],
+      ['.final-cta', 'final_cta'],
+      ['.hero', 'hero'],
+      ['footer', 'footer'],
+      ['.nav', 'nav_header']
+    ];
+    document.addEventListener('click', function(e) {
+      var a = e.target.closest('a[href*="t.me/juli_x11"], a[href*="wa.me/79139406920"]');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      var button_type = href.indexOf('wa.me') !== -1 ? 'whatsapp' : 'telegram';
+      var button_location = 'other';
+      for (var i = 0; i < LOCATIONS.length; i++) {
+        if (a.closest(LOCATIONS[i][0])) { button_location = LOCATIONS[i][1]; break; }
+      }
+      try {
+        gtag('event', 'cta_click', {
+          button_location: button_location,
+          button_type: button_type,
+          page_path: location.pathname
+        });
+      } catch (err) { /* noop */ }
+    }, true);
+  })();
+</script>
+
 </body>
 </html>
