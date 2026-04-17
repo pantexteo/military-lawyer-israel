@@ -128,7 +128,9 @@ ARTICLE_PROMPT = """\
 5. Используй конкретику из новости: даты, цифры, имена, законы.
 6. FAQ — 5 вопросов, которые реально задал бы испуганный человек.
 7. Slug — транслитерация (prizyv-reservistov-2026), без кириллицы, через дефис.
-8. Если новость нерелевантна аудитории — верни: {{"skip": true}}"""
+8. Если новость нерелевантна аудитории — верни: {{"skip": true}}
+9. Уже опубликованные темы (НЕ дублировать!): {existing_topics}
+   Если новость о том же — верни: {{"skip": true}}"""
 
 # Промпт для summary (если статья уже была пропущена)
 SUMMARY_PROMPT = """\
@@ -184,6 +186,64 @@ def escape_html(text: str) -> str:
 
 def slug_exists(slug: str) -> bool:
     return os.path.exists(os.path.join(NEWS_DIR, f"{slug}.html"))
+
+
+def get_existing_slugs() -> list:
+    """Возвращает slugs всех существующих статей (имена файлов без .html)."""
+    if not os.path.exists(NEWS_DIR):
+        return []
+    return [
+        f[:-5] for f in os.listdir(NEWS_DIR)
+        if f.endswith(".html") and f != "index.html"
+    ]
+
+
+def is_similar_topic(new_slug: str, existing_slugs: list, threshold: float = 0.45) -> str:
+    """
+    Проверяет семантическую близость нового slug к существующим.
+    Возвращает имя дубля или пустую строку.
+    Jaccard по ключевым словам slug (без стоп-слов).
+    """
+    STOP = {"2026", "2025", "v", "i", "dlya", "ot", "na", "iz", "o", "po", "k", "s",
+            "i", "cahala", "tsahal", "cahal", "izrail", "izrailja", "armii", "armiya"}
+
+    def words(slug: str) -> set:
+        return {w for w in slug.split("-") if w not in STOP and len(w) > 2}
+
+    new_words = words(new_slug)
+    if not new_words:
+        return ""
+    for existing in existing_slugs:
+        ex_words = words(existing)
+        if not ex_words:
+            continue
+        inter = new_words & ex_words
+        union = new_words | ex_words
+        jaccard = len(inter) / len(union)
+        if jaccard >= threshold:
+            return existing
+    return ""
+
+
+def get_existing_topics_summary() -> str:
+    """Краткий список тем уже опубликованных статей — для промпта."""
+    slugs = get_existing_slugs()
+    if not slugs:
+        return "нет"
+    # Читаем <title> каждой статьи
+    titles = []
+    for slug in slugs[:20]:  # не больше 20 чтобы не раздувать промпт
+        path = os.path.join(NEWS_DIR, f"{slug}.html")
+        try:
+            with open(path, encoding="utf-8") as f:
+                for line in f:
+                    if "<title>" in line:
+                        t = re.sub(r"<[^>]+>", "", line).strip()
+                        titles.append(t)
+                        break
+        except Exception:
+            titles.append(slug)
+    return "; ".join(titles)
 
 
 # ---- Перелинковка: ситуационные страницы ----
@@ -253,13 +313,14 @@ def fetch_news(exa_key: str) -> list:
     return results[:NEWS_COUNT + 5]  # запас на фильтрацию
 
 
-def generate_article(client: OpenAI, item: dict) -> Optional[dict]:
-    """Генерирует полную статью через Nemotron."""
+def generate_article(client: OpenAI, item: dict, existing_topics: str = "нет") -> Optional[dict]:
+    """Генерирует полную статью через Kimi K2.5."""
     prompt = ARTICLE_PROMPT.format(
         title=item["title"],
         source=item["source"],
         date=format_date_ru(item["date"]),
         text=item["raw_text"][:600],
+        existing_topics=existing_topics,
     )
     try:
         response = client.chat.completions.create(
@@ -703,20 +764,35 @@ def main():
     print("Step 2: Generating articles via Kimi K2.5 (NVIDIA NIM)...")
     client = OpenAI(base_url=NVIDIA_BASE_URL, api_key=nvidia_key)
 
+    existing_slugs = get_existing_slugs()
+    existing_topics = get_existing_topics_summary()
+    print(f"  Existing articles: {len(existing_slugs)}")
+
     articles = []  # (article_data, news_item)
+    # Slugs принятых в этом запуске — тоже добавляем в проверку
+    session_slugs = list(existing_slugs)
+
     for item in candidates:
         if len(articles) >= NEWS_COUNT:
             break
         print(f"  Processing: {item['title'][:60]}...")
-        article = generate_article(client, item)
+        article = generate_article(client, item, existing_topics=existing_topics)
         if article is None:
             print(f"    SKIP")
             continue
-        if slug_exists(article["slug"]):
-            print(f"    SKIP (already exists): {article['slug']}")
+        slug = article["slug"]
+        # 1. Точное совпадение файла
+        if slug_exists(slug):
+            print(f"    SKIP (exact duplicate): {slug}")
             continue
+        # 2. Семантически похожая тема
+        similar = is_similar_topic(slug, session_slugs)
+        if similar:
+            print(f"    SKIP (similar to '{similar}'): {slug}")
+            continue
+        session_slugs.append(slug)
         articles.append((article, item))
-        print(f"    OK: {article['slug']}")
+        print(f"    OK: {slug}")
 
     if not articles:
         print("WARNING: No new articles generated")
