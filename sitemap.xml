@@ -390,12 +390,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tzahal-advokat.com/news/dopolnitelnyy-prizyv-reservistov-tsahal-2026.html</loc>
-    <lastmod>2026-04-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://tzahal-advokat.com/news/konflikt-cahal-pravitelstvo-prizyv-2026.html</loc>
     <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
@@ -425,12 +419,6 @@
   <url>
     <loc>https://tzahal-advokat.com/news/armiya-obmanula-sud-dannye-prizyva-haredim.html</loc>
     <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://tzahal-advokat.com/news/dopolnitelnyy-prizyv-rezervistov-2026.html</loc>
-    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
