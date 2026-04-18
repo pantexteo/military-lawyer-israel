@@ -3206,9 +3206,8 @@
       });
     })();
 
-    // ---- GA4: track CTA clicks (Telegram + WhatsApp) ----
+    // ---- GA4 + Yandex.Metrika: track CTA clicks (Telegram + WhatsApp) ----
     (function() {
-      if (typeof gtag !== 'function') return;
       var LOCATIONS = [
         ['.emergency-bar', 'emergency_bar'],
         ['.mobile-bar', 'mobile_bar'],
@@ -3233,11 +3232,16 @@
           if (a.closest(LOCATIONS[i][0])) { button_location = LOCATIONS[i][1]; break; }
         }
         try {
-          gtag('event', 'cta_click', {
-            button_location: button_location,
-            button_type: button_type,
-            page_path: location.pathname
-          });
+          if (typeof gtag === 'function') {
+            gtag('event', 'cta_click', {
+              button_location: button_location,
+              button_type: button_type,
+              page_path: location.pathname
+            });
+          }
+          if (typeof ym === 'function') {
+            ym(108440645, 'reachGoal', 'cta_click_' + button_type, { button_location: button_location });
+          }
         } catch (err) { /* noop */ }
       }, true);
     })();
