@@ -186,6 +186,38 @@
   }
   </script>
 
+  <!-- JSON-LD: Person (E-E-A-T — идентификация основателя как эксперта с личным опытом) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://tzahal-advokat.com/#yulia",
+    "name": "Юлия",
+    "jobTitle": "Основатель проекта «Помощь с армией Израиля»",
+    "description": "Репатриантка в Израиль, которая лично прошла через задержание в аэропорту Бен-Гурион и военную тюрьму за статус дезертира, о котором не знала. Теперь вместе с командой бывших военных прокуроров помогает другим репатриантам из СНГ урегулировать военный статус в ЦАХАЛе.",
+    "image": "https://tzahal-advokat.com/img/yulia-portrait.jpg",
+    "url": "https://tzahal-advokat.com/",
+    "sameAs": ["https://t.me/juli_x11"],
+    "knowsLanguage": ["Russian", "Hebrew", "English"],
+    "knowsAbout": [
+      "Военная служба в ЦАХАЛе",
+      "Снятие статуса дезертира в Израиле",
+      "Задержание в аэропорту Бен-Гурион из-за армии",
+      "Военный трибунал Израиля",
+      "Милуим и резервная служба",
+      "Репатриация в Израиль и военные обязанности",
+      "Двойное гражданство и служба в армии"
+    ],
+    "hasOccupation": {
+      "@type": "Occupation",
+      "name": "Помощник-координатор по военным вопросам ЦАХАЛ",
+      "occupationLocation": {"@type": "Country", "name": "Israel"},
+      "description": "Координация работы с военными адвокатами — бывшими прокурорами ЦАХАЛ. Бесплатная проверка статуса в армейских базах данных, сопровождение при задержании в аэропорту, подготовка к военному трибуналу, снятие статуса дезертира."
+    },
+    "worksFor": {"@id": "https://tzahal-advokat.com/#org"}
+  }
+  </script>
+
   <style>
     .skip-link {
       position: absolute;
@@ -993,6 +1025,29 @@
       font-size: 15px;
       color: var(--text-body);
       line-height: 1.7;
+    }
+    .who__card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .who__card-link:hover {
+      border-bottom-color: var(--accent);
+    }
+    .who__card-link::after {
+      content: "→";
+      font-weight: 400;
+      transition: transform 0.2s;
+    }
+    .who__card-link:hover::after {
+      transform: translateX(3px);
     }
 
     /* Risk Check CTA */
@@ -1999,6 +2054,7 @@
             </div>
             <h3>&laquo;Проверил через МВД — сказали, всё чисто&raquo;</h3>
             <p>Вы позвонили в&nbsp;МВД Израиля или проверили онлайн, и&nbsp;вам подтвердили: запретов на выезд нет. Но МВД не&nbsp;видит базу ЦАХАЛа. Это две разные системы. Человек летит спокойно — а&nbsp;в&nbsp;аэропорту узнаёт, что он дезертир — Израиль внёс его в&nbsp;базу ещё годы назад. Именно так произошло со мной. Если у&nbsp;вас есть израильское гражданство и&nbsp;вы не&nbsp;служили — &laquo;всё чисто&raquo; от&nbsp;МВД ещё ничего не&nbsp;значит.</p>
+            <a href="/proverit-voennyj-status-izrail.html" class="who__card-link">Как проверить статус ЦАХАЛ удалённо</a>
           </article>
 
           <article class="who__card reveal" style="transition-delay: 0.08s">
@@ -2007,6 +2063,7 @@
             </div>
             <h3>&laquo;Я женщина — зачем мне армия?&raquo;</h3>
             <p>Военная обязанность в&nbsp;Израиле распространяется и&nbsp;на&nbsp;женщин. Если вы получили гражданство, прошли медкомиссию или просто были зарегистрированы в&nbsp;системе до определённого возраста — в&nbsp;ЦАХАЛе может стоять отметка о&nbsp;призыве. &laquo;Девушку не тронут&raquo; — это миф, который мы слышим каждую неделю.</p>
+            <a href="/zhenshchina-cahala.html" class="who__card-link">Женщины и ЦАХАЛ — 4 основания освобождения</a>
           </article>
 
           <article class="who__card reveal" style="transition-delay: 0.16s">
@@ -2015,6 +2072,7 @@
             </div>
             <h3>&laquo;Живу за границей больше десяти лет&raquo;</h3>
             <p>Вы давно уехали из Израиля. Живёте в&nbsp;России, Европе, где угодно. Всё хорошо — но прилететь боитесь. Или наоборот: не&nbsp;боитесь, потому что &laquo;столько лет прошло&raquo;. И&nbsp;то и&nbsp;другое — повод проверить статус до покупки билета. Можно ли прилететь в&nbsp;Израиль, если не&nbsp;служил в&nbsp;армии? Можно. Но только если заранее знать, что в&nbsp;вашем деле.</p>
+            <a href="/izrailtyanin-za-rubezhom-cahala.html" class="who__card-link">Израильтянин за рубежом — что делать</a>
           </article>
 
           <article class="who__card reveal" style="transition-delay: 0.24s">
@@ -2023,6 +2081,7 @@
             </div>
             <h3>&laquo;Меня уже задержали — нужна помощь прямо сейчас&raquo;</h3>
             <p>Вы в&nbsp;аэропорту, на базе или в&nbsp;отделении военной полиции. Вам сказали &laquo;дезертир&raquo;, забрали паспорт, надели наручники. Вы не&nbsp;понимаете, что происходит. Именно для этого мы работаем в&nbsp;том числе экстренно — связь с&nbsp;адвокатом в&nbsp;тот же час. Задержали в&nbsp;аэропорту Израиля — напишите прямо сейчас.</p>
+            <a href="/zaderzhali-v-aeroportu.html" class="who__card-link">Задержали в Бен-Гурионе — инструкция</a>
           </article>
 
           <article class="who__card reveal" style="transition-delay: 0.32s">
@@ -2031,6 +2090,7 @@
             </div>
             <h3>&laquo;Получил повестку или вызов на военный трибунал&raquo;</h3>
             <p>Вам пришло уведомление — на адрес в&nbsp;Израиле, через знакомых, при попытке обновить документы. Военный трибунал, вызов на базу. Звучит страшно. Военный трибунал в&nbsp;Израиле — это серьёзно, но далеко не&nbsp;всегда заканчивается тюрьмой. Важно не&nbsp;игнорировать и не&nbsp;паниковать, а&nbsp;разобраться: что именно вам грозит и&nbsp;какие есть варианты.</p>
+            <a href="/voennyj-tribunal-izrail.html" class="who__card-link">Военный трибунал Израиля — как защититься</a>
           </article>
 
           <div class="who__card reveal">
@@ -2039,6 +2099,7 @@
             </div>
             <h3>Мой ребёнок имеет гражданство&nbsp;&mdash; боюсь за&nbsp;него</h3>
             <p>Ваш сын или дочь получили гражданство в&nbsp;детстве. Вы&nbsp;хотите поехать семьёй, но&nbsp;не&nbsp;уверены, безопасно&nbsp;ли это для ребёнка. Проверим заранее&nbsp;&mdash; чтобы отпуск не&nbsp;превратился в&nbsp;кошмар.</p>
+            <a href="/dvojnoe-grazhdanstvo-armiya.html" class="who__card-link">Двойное гражданство и ЦАХАЛ</a>
           </div>
         </div>
       </div>
