@@ -428,4 +428,22 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://tzahal-advokat.com/news/nakazanie-voennaya-tyurma-tsakhal-30-dney-2026.html</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tzahal-advokat.com/news/cahal-30-sutok-tyurmy-uklonistam-i-dezertiram-2026.html</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tzahal-advokat.com/news/otmena-vozrasta-osvobozhdeniya-cahal-2026.html</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
