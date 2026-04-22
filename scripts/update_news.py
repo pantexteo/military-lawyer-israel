@@ -61,6 +61,11 @@ SEARCH_QUERIES = [
     "ЦАХАЛ дезертир уклонист призыв 2026",
     "армия Израиль призывники закон уклонение 2026",
     "мобилизация Израиль харедим резервисты призыв",
+    "военный трибунал ЦАХАЛ приговор наказание",
+    "аэропорт Бен-Гурион задержание уклонист арест",
+    "дезертирство ЦАХАЛ амнистия возвращение в Израиль",
+    "репатриант Израиль служба армия закон",
+    "военная полиция Израиль арест уклониста",
 ]
 
 BLOCKED_DOMAINS = ["haaretz.com", "jpost.com", "timesofisrael.com", "ynetnews.com"]
@@ -230,9 +235,10 @@ def get_existing_topics_summary() -> str:
     slugs = get_existing_slugs()
     if not slugs:
         return "нет"
-    # Читаем <title> каждой статьи
+    # Читаем <title> последних 8 статей — чтобы дедуп был не слишком агрессивным
+    # (ранее было 20 — блокировало даже отдалённо похожее)
     titles = []
-    for slug in slugs[:20]:  # не больше 20 чтобы не раздувать промпт
+    for slug in slugs[:8]:
         path = os.path.join(NEWS_DIR, f"{slug}.html")
         try:
             with open(path, encoding="utf-8") as f:
@@ -325,7 +331,7 @@ def generate_article(client: OpenAI, item: dict, existing_topics: str = "нет"
     try:
         response = client.chat.completions.create(
             model=MODEL_NAME,
-            max_tokens=4096,
+            max_tokens=6000,
             temperature=0.7,
             messages=[{"role": "user", "content": prompt}],
         )
@@ -343,12 +349,14 @@ def generate_article(client: OpenAI, item: dict, existing_topics: str = "нет"
 
         data = json.loads(content)
         if data.get("skip"):
+            print(f"  SKIP (LLM marked as skip — duplicate topic or not relevant)")
             return None
 
         # Проверяем обязательные поля
         required = ["title", "meta_description", "lead", "sections", "faq", "card_summary", "slug"]
         if not all(k in data for k in required):
-            print(f"  WARNING: Missing fields in response")
+            missing = [k for k in required if k not in data]
+            print(f"  WARNING: Missing fields: {missing}")
             return None
 
         # Очистка slug
