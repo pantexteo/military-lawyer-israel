@@ -123,6 +123,19 @@
     ]
   }
   </script>
+  
+  <!-- silo-links-v1 — внутренние ссылки тематического кластера -->
+  <section class="silo-links" aria-label="По теме">
+    <div class="container container--narrow">
+      <h2 class="silo-links__title">По теме</h2>
+      <div class="silo-links__grid">
+        <a href="repatriant-cahala.html" class="silo-links__card">Репатриант и ЦАХАЛ — кто обязан</a>
+        <a href="zhenshchina-cahala.html" class="silo-links__card">Женщины и ЦАХАЛ — 4 основания освобождения</a>
+        <a href="izrailtyanin-za-rubezhom-cahala.html" class="silo-links__card">Гражданин Израиля живу за рубежом</a>
+      </div>
+    </div>
+  </section>
+
   <!-- author-block-v1 — Article schema (E-E-A-T) -->
   <script type="application/ld+json">
   {
@@ -448,6 +461,48 @@
     .author-block__verified a:hover { text-decoration: underline; }
     @media (max-width: 600px) {
       .author-block__inner { flex-direction: column; gap: 16px; }
+    }
+
+    /* silo-links-v1 */
+    .silo-links {
+      padding: 40px 0;
+      background: var(--bg-warm, #faf7f2);
+      border-top: 1px solid var(--border-light, #e9e4dc);
+    }
+    .silo-links__title {
+      font-family: var(--font-display, Georgia, serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-primary, #2c2620);
+      margin-bottom: 20px;
+    }
+    .silo-links__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+      gap: 12px;
+    }
+    .silo-links__card {
+      display: block;
+      padding: 16px 20px;
+      background: var(--bg-white, #fff);
+      border: 1px solid var(--border-light, #e9e4dc);
+      border-radius: var(--radius-md, 8px);
+      text-decoration: none;
+      color: var(--text-primary, #2c2620);
+      font-size: 0.95rem;
+      font-weight: 500;
+      line-height: 1.4;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .silo-links__card:hover {
+      border-color: var(--accent, #b8551e);
+      box-shadow: var(--card-shadow-hover, 0 4px 16px rgba(0,0,0,0.08));
+      transform: translateY(-2px);
+    }
+    .silo-links__card::after {
+      content: " →";
+      color: var(--accent, #b8551e);
+      font-weight: 600;
     }
 </style>
 </head>
@@ -790,54 +845,9 @@
       </div>
     </div>
   </aside>
-
-
-  <!-- Читайте по теме -->
-  <section style="background:#FAF8F5; padding:60px 0 50px;">
-    <div class="container">
-      <h2 style="font-family:'Outfit',sans-serif; font-size:1.6rem; font-weight:700; color:#1a1a1a; text-align:center; margin:0 0 10px;">Читайте по теме</h2>
-      <p style="text-align:center; color:#555; font-size:0.95rem; margin:0 0 36px;">Разборы конкретных ситуаций — найдите свою</p>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:20px;">
-
-        <a href="dezertir-cahala.html" style="display:block; background:#fff; border-radius:12px; padding:24px; text-decoration:none; border:1px solid #eae6e0; transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'">
-          <div style="font-size:1.5rem; margin-bottom:10px;">&#x1FA96;</div>
-          <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:1rem; color:#1a1a1a; margin-bottom:8px;">Дезертир ЦАХАЛ — что делать</div>
-          <div style="font-size:0.875rem; color:#666; line-height:1.5;">Не явился в армию, уехал из Израиля или потерял статус — разбор всех ситуаций и выходов.</div>
-          <div style="margin-top:14px; font-size:0.85rem; font-weight:600; color:#B85C38;">Читать →</div>
-        </a>
-
-        <a href="dvojnoe-grazhdanstvo-armiya.html" style="display:block; background:#fff; border-radius:12px; padding:24px; text-decoration:none; border:1px solid #eae6e0; transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'">
-          <div style="font-size:1.5rem; margin-bottom:10px;">&#x1F1EE;&#x1F1F1;</div>
-          <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:1rem; color:#1a1a1a; margin-bottom:8px;">Двойное гражданство и армия Израиля</div>
-          <div style="font-size:0.875rem; color:#666; line-height:1.5;">Как двойное гражданство влияет на воинскую обязанность и что нужно знать до поездки.</div>
-          <div style="margin-top:14px; font-size:0.85rem; font-weight:600; color:#B85C38;">Читать →</div>
-        </a>
-
-        <a href="zaderzhali-v-aeroportu.html" style="display:block; background:#fff; border-radius:12px; padding:24px; text-decoration:none; border:1px solid #eae6e0; transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'">
-          <div style="font-size:1.5rem; margin-bottom:10px;">&#x2708;&#xFE0F;</div>
-          <div style="font-family:'Outfit',sans-serif; font-weight:700; font-size:1rem; color:#1a1a1a; margin-bottom:8px;">Задержали в аэропорту Израиля</div>
-          <div style="font-size:0.875rem; color:#666; line-height:1.5;">Инструкция если вас задержали при въезде или выезде из-за военного статуса. Первые 2 часа решают всё.</div>
-          <div style="margin-top:14px; font-size:0.85rem; font-weight:600; color:#B85C38;">Читать →</div>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
   <!-- Footer -->
 
   <!-- Читайте по теме -->
-  <section style="padding:40px 0;background:var(--bg-warm);border-top:1px solid var(--border-light);">
-    <div class="container">
-      <h2 style="font-family:var(--font-display);font-size:1.2rem;font-weight:600;color:var(--text-primary);margin-bottom:20px;">Читайте по теме</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;">
-        <a href="dezertir-cahala.html" style="display:block;background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-md);padding:16px 20px;text-decoration:none;color:var(--text-primary);font-size:0.95rem;font-weight:500;line-height:1.4;transition:border-color 0.2s,box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='var(--card-shadow-hover)'" onmouseout="this.style.borderColor='var(--border-light)';this.style.boxShadow='none'">Дезертир ЦАХАЛ — что делать</a>
-        <a href="dvojnoe-grazhdanstvo-armiya.html" style="display:block;background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-md);padding:16px 20px;text-decoration:none;color:var(--text-primary);font-size:0.95rem;font-weight:500;line-height:1.4;transition:border-color 0.2s,box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='var(--card-shadow-hover)'" onmouseout="this.style.borderColor='var(--border-light)';this.style.boxShadow='none'">Двойное гражданство и армия Израиля</a>
-        <a href="zaderzhali-v-aeroportu.html" style="display:block;background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-md);padding:16px 20px;text-decoration:none;color:var(--text-primary);font-size:0.95rem;font-weight:500;line-height:1.4;transition:border-color 0.2s,box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='var(--card-shadow-hover)'" onmouseout="this.style.borderColor='var(--border-light)';this.style.boxShadow='none'">Задержали в аэропорту Израиля</a>
-      </div>
-    </div>
-  </section>
-
   <footer class="footer">
     <div class="container">
       <div class="footer__inner">
