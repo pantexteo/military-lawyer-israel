@@ -42,7 +42,7 @@
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CZV65B06MV');</script>
 
   <!-- Яндекс.Метрика — REPLACE: вставить реальный ID после создания -->
-  <script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(108440645,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
+  <script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(108440645,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:false});</script>
   <noscript><div><img src="https://mc.yandex.ru/watch/108440645" style="position:absolute;left:-9999px;" alt=""></div></noscript>
 
   <!-- Preload: hero image for faster LCP -->
@@ -1515,6 +1515,35 @@
       transition: color 0.2s;
     }
     .footer__links a:hover { color: #fff; }
+    .footer__nav {
+      width: 100%;
+      margin-top: 12px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .footer__nav-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+    .footer__nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+      gap: 8px 24px;
+      list-style: none;
+    }
+    .footer__nav-grid a {
+      display: inline-block;
+      padding: 4px 0;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer__nav-grid a:hover { color: #fff; text-decoration: underline; }
     .footer__copy {
       width: 100%;
       text-align: center;
@@ -3076,6 +3105,19 @@
           <li><a href="https://t.me/juli_x11" target="_blank" rel="noopener noreferrer">Telegram</a></li>
           <li><a href="mailto:chinchin-co@mail.ru">chinchin-co@mail.ru</a></li>
         </ul>
+        <nav class="footer__nav" aria-label="Навигация по ситуациям">
+          <div class="footer__nav-title">Помощь по ситуации</div>
+          <ul class="footer__nav-grid">
+            <li><a href="/dezertir-cahala.html">Дезертир ЦАХАЛ — снять статус</a></li>
+            <li><a href="/zaderzhali-v-aeroportu.html">Задержали в Бен-Гурионе</a></li>
+            <li><a href="/proverit-voennyj-status-izrail.html">Проверить статус удалённо</a></li>
+            <li><a href="/voennyj-tribunal-izrail.html">Военный трибунал Израиля</a></li>
+            <li><a href="/zhenshchina-cahala.html">Женщины и ЦАХАЛ</a></li>
+            <li><a href="/repatriant-cahala.html">Репатриант и армия</a></li>
+            <li><a href="/miluim-cahala.html">Милуим — резерв</a></li>
+            <li><a href="/posledstviya-ukloneniya-cahala.html">Последствия уклонения</a></li>
+          </ul>
+        </nav>
         <p class="footer__copy">Юридическое сопровождение ведут адвокаты — бывшие военные прокуроры Израиля. Юлия координирует процесс и помогает на каждом этапе — от проверки статуса до закрытия дела.</p>
         <p style="margin-top: 12px; font-size: 0.8rem; color: var(--text-muted);">Обновлено: <time datetime="2026-04-07">7 апреля 2026</time> | <a href="privacy.html" style="color: var(--text-muted); text-decoration: underline;">Политика конфиденциальности</a></p>
         <p style="margin-top: 8px; font-size: 0.8rem; color: var(--text-muted);">&copy; 2026 Юлия — Помощь с армией Израиля. Все права защищены.</p>
