@@ -1,12 +1,15 @@
 User-agent: *
 Allow: /
 Sitemap: https://tzahal-advokat.com/sitemap.xml
+Sitemap: https://tzahal-advokat.com/sitemap-news.xml
 
 User-agent: Yandex
 Allow: /
 Host: tzahal-advokat.com
 Sitemap: https://tzahal-advokat.com/sitemap.xml
+Sitemap: https://tzahal-advokat.com/sitemap-news.xml
 
 User-agent: Mail.Ru
 Allow: /
 Sitemap: https://tzahal-advokat.com/sitemap.xml
+Sitemap: https://tzahal-advokat.com/sitemap-news.xml
