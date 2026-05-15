@@ -55,7 +55,15 @@ SITE_URL = "https://tzahal-advokat.com"
 
 # NVIDIA NIM
 NVIDIA_BASE_URL = "https://integrate.api.nvidia.com/v1"
-MODEL_NAME = "moonshotai/kimi-k2.5"
+# Модели пробуются по очереди — если первая возвращает 404 (deprecated),
+# падаем на следующую. k2.6 выпущена 29.04.2026 (самая свежая).
+# k2-instruct — стабильное имя без точек (бывает требуют такое).
+MODEL_FALLBACKS = [
+    "moonshotai/kimi-k2.6",
+    "moonshotai/kimi-k2-instruct",
+    "moonshotai/kimi-k2.5",  # старая, на случай если k2.6 ещё не везде
+]
+MODEL_NAME = MODEL_FALLBACKS[0]  # для совместимости и логов
 
 SEARCH_QUERIES = [
     "ЦАХАЛ дезертир уклонист призыв 2026",
@@ -345,12 +353,31 @@ def generate_article(client: OpenAI, item: dict, existing_topics: str = "нет"
         existing_topics=existing_topics,
     )
     try:
-        response = client.chat.completions.create(
-            model=MODEL_NAME,
-            max_tokens=6000,
-            temperature=0.7,
-            messages=[{"role": "user", "content": prompt}],
-        )
+        response = None
+        last_err = None
+        for model_id in MODEL_FALLBACKS:
+            try:
+                response = client.chat.completions.create(
+                    model=model_id,
+                    max_tokens=6000,
+                    temperature=0.7,
+                    messages=[{"role": "user", "content": prompt}],
+                )
+                # Если first try пошёл — больше fallback не нужен
+                if model_id != MODEL_FALLBACKS[0]:
+                    print(f"  INFO: model '{model_id}' used as fallback (primary failed)")
+                break
+            except Exception as e:
+                err_str = str(e)
+                last_err = err_str
+                if "404" in err_str or "not found" in err_str.lower():
+                    print(f"  INFO: model '{model_id}' returned 404, trying next fallback")
+                    continue
+                # Другие ошибки — не пробуем дальше, ломаемся сразу
+                raise
+        if response is None:
+            print(f"  WARNING: all {len(MODEL_FALLBACKS)} models failed. Last error: {last_err[:200]}")
+            return None
         content = response.choices[0].message.content
         if not content:
             print(f"  WARNING: Empty response for '{item['title'][:40]}'")
