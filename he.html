@@ -696,6 +696,182 @@
     }
 
     /* ================================================
+       CONTACT FORM — טופס גיבוי (backup CTA)
+       ================================================ */
+    .contact-form-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      padding: 0;
+      background: none;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--accent-border);
+      transition: color 0.2s;
+    }
+    .contact-form-trigger:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+    .contact-form-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 20, 20, 0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      backdrop-filter: blur(2px);
+    }
+    .contact-form-overlay[data-open="true"] { opacity: 1; }
+    .contact-form-overlay[hidden] { display: none; }
+
+    .contact-form-modal {
+      background: var(--bg-white);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+      max-width: 480px;
+      width: 100%;
+      max-height: 92vh;
+      overflow-y: auto;
+      padding: 36px 32px 28px;
+      position: relative;
+      transform: translateY(12px);
+      transition: transform 0.25s ease;
+      direction: rtl;
+      text-align: right;
+    }
+    .contact-form-overlay[data-open="true"] .contact-form-modal { transform: translateY(0); }
+
+    .contact-form-close {
+      position: absolute;
+      top: 12px;
+      inset-inline-start: 12px;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: transparent;
+      border: none;
+      font-size: 22px;
+      line-height: 1;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+    .contact-form-close:hover { background: var(--bg-warm); color: var(--text-primary); }
+
+    .contact-form-modal h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      margin: 0 0 8px;
+      font-style: normal;
+    }
+    .contact-form-intro {
+      font-size: 0.95rem;
+      color: var(--text-body);
+      line-height: 1.55;
+      margin: 0 0 24px;
+    }
+
+    .contact-form-modal form { display: flex; flex-direction: column; gap: 14px; }
+    .contact-form-modal label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: 0.02em;
+    }
+    .contact-form-modal input,
+    .contact-form-modal textarea {
+      width: 100%;
+      padding: 12px 14px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text-primary);
+      background: var(--bg-warm);
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      transition: border-color 0.15s, background 0.15s;
+      box-sizing: border-box;
+    }
+    .contact-form-modal textarea { resize: vertical; min-height: 96px; font-family: var(--font-body); }
+    .contact-form-modal input:focus,
+    .contact-form-modal textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: var(--bg-white);
+    }
+    .contact-form-modal input[aria-invalid="true"],
+    .contact-form-modal textarea[aria-invalid="true"] {
+      border-color: #c0392b;
+      background: #fff5f4;
+    }
+    .contact-form-submit {
+      margin-top: 8px;
+      width: 100%;
+      padding: 14px 24px;
+      font-size: 15px;
+    }
+    .contact-form-submit[disabled] { opacity: 0.6; cursor: wait; }
+    .contact-form-micro {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 6px 0 0;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .contact-form-error {
+      background: #fff5f4;
+      border: 1px solid #f5c6c1;
+      color: #a83226;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      margin: 0;
+    }
+    .contact-form-success {
+      text-align: center;
+      padding: 16px 0 8px;
+    }
+    .contact-form-success h4 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--teal);
+      margin: 0 0 10px;
+      font-style: normal;
+    }
+    .contact-form-success p {
+      color: var(--text-body);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .contact-form-success::before {
+      content: '';
+      display: block;
+      width: 48px; height: 48px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: var(--teal) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") center/24px no-repeat;
+    }
+
+    @media (max-width: 480px) {
+      .contact-form-modal { padding: 28px 20px 24px; }
+      .contact-form-modal h3 { font-size: 1.3rem; }
+    }
+
+    /* ================================================
        SECTION SPACING
        ================================================ */
     section {
@@ -1769,6 +1945,9 @@
                 בדקו את הסטטוס שלכם בחינם
               </a>
             </div>
+            <button type="button" class="contact-form-trigger" data-form-open aria-haspopup="dialog" aria-controls="contactForm">
+              המסנג'ר לא נפתח? השאירו פנייה דרך הטופס
+            </button>
             <p class="micro-copy">חסוי. אענה אישית תוך שעתיים. ללא התחייבות.</p>
           </div>
           <div class="hero__photo-area reveal" style="transition-delay: 0.15s">
@@ -2531,6 +2710,45 @@
       </div>
     </section>
 
+    <!-- ===== טופס יצירת קשר (CTA גיבוי) ===== -->
+    <div id="contactForm" class="contact-form-overlay" hidden aria-hidden="true">
+      <div class="contact-form-modal" role="dialog" aria-modal="true" aria-labelledby="contactFormTitle">
+        <button type="button" class="contact-form-close" data-form-close aria-label="סגירת טופס">×</button>
+        <h3 id="contactFormTitle">השאירו פנייה</h3>
+        <p class="contact-form-intro">אם המסנג'רים לא נפתחים או שאתם מעדיפים שיחה — מלאו את הטופס. יוליה תיצור איתכם קשר באופן אישי תוך שעה.</p>
+
+        <form id="contactFormElement" novalidate>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
+
+          <label>שם
+            <input type="text" name="name" required minlength="2" maxlength="80" autocomplete="given-name" placeholder="איך לפנות אליכם">
+          </label>
+
+          <label>טלפון (לשיחה או WhatsApp)
+            <input type="tel" name="phone" required pattern="[+\d\s()\-]{7,25}" autocomplete="tel" placeholder="+972 ...">
+          </label>
+
+          <label>טלגרם (אם יש, לא חובה)
+            <input type="text" name="telegram" maxlength="60" autocomplete="off" placeholder="@username">
+          </label>
+
+          <label>תארו את המצב
+            <textarea name="message" required minlength="10" maxlength="2000" rows="4" placeholder="בקצרה: מה קרה, האם יש דרכון, אזרחות, גיל"></textarea>
+          </label>
+
+          <p class="contact-form-error" hidden role="alert"></p>
+
+          <button type="submit" class="btn btn--primary contact-form-submit">שליחת פנייה</button>
+          <p class="contact-form-micro">חסוי. איננו מעבירים מידע לצדדים שלישיים.</p>
+        </form>
+
+        <div class="contact-form-success" hidden role="status">
+          <h4>תודה!</h4>
+          <p>הפנייה התקבלה. יוליה תיצור איתכם קשר אישי תוך שעה בטלפון או בטלגרם שציינתם.</p>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <!-- ============================================
@@ -2667,6 +2885,141 @@
   </script>
 
 <script>
+  // ---- טופס יצירת קשר (CTA גיבוי) ----
+  // ВАЖНО: WEB3FORMS_ACCESS_KEY получить на https://web3forms.com (ввести email → ключ придёт письмом)
+  var WEB3FORMS_ACCESS_KEY = '__REPLACE_WITH_YOUR_WEB3FORMS_KEY__';
+  (function() {
+    var overlay = document.getElementById('contactForm');
+    if (!overlay) return;
+    var form = document.getElementById('contactFormElement');
+    var submitBtn = form.querySelector('.contact-form-submit');
+    var errorEl = form.querySelector('.contact-form-error');
+    var successEl = overlay.querySelector('.contact-form-success');
+    var lastFocused = null;
+
+    function openForm(triggerEl) {
+      lastFocused = triggerEl || document.activeElement;
+      overlay.hidden = false;
+      overlay.setAttribute('aria-hidden', 'false');
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() { overlay.dataset.open = 'true'; });
+      });
+      document.body.style.overflow = 'hidden';
+      var firstInput = form.querySelector('input[name="name"]');
+      if (firstInput) setTimeout(function() { firstInput.focus(); }, 80);
+    }
+    function closeForm() {
+      overlay.dataset.open = 'false';
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      setTimeout(function() { overlay.hidden = true; }, 220);
+      if (lastFocused && typeof lastFocused.focus === 'function') { try { lastFocused.focus(); } catch (_) {} }
+    }
+    document.addEventListener('click', function(e) {
+      var trigger = e.target.closest('[data-form-open]');
+      if (trigger) { e.preventDefault(); openForm(trigger); return; }
+      if (e.target.closest('[data-form-close]')) { closeForm(); return; }
+      if (e.target === overlay) { closeForm(); }
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && overlay.dataset.open === 'true') closeForm();
+    });
+
+    function showError(msg) { errorEl.textContent = msg; errorEl.hidden = false; }
+    function clearError() { errorEl.hidden = true; errorEl.textContent = ''; }
+    function markInvalid(input, invalid) {
+      if (invalid) input.setAttribute('aria-invalid', 'true');
+      else input.removeAttribute('aria-invalid');
+    }
+    form.addEventListener('input', function(e) {
+      if (e.target.matches('input, textarea')) markInvalid(e.target, false);
+    });
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      clearError();
+
+      if (form._honey && form._honey.value) {
+        form.style.display = 'none';
+        successEl.hidden = false;
+        return;
+      }
+
+      var data = {
+        name: form.name.value.trim(),
+        phone: form.phone.value.trim(),
+        telegram: form.telegram.value.trim(),
+        message: form.message.value.trim()
+      };
+      var firstInvalid = null;
+      if (data.name.length < 2) { markInvalid(form.name, true); firstInvalid = firstInvalid || form.name; }
+      if (data.phone.length < 7) { markInvalid(form.phone, true); firstInvalid = firstInvalid || form.phone; }
+      if (data.message.length < 10) { markInvalid(form.message, true); firstInvalid = firstInvalid || form.message; }
+      if (firstInvalid) {
+        showError('בדקו את השדות המסומנים בבקשה.');
+        firstInvalid.focus();
+        return;
+      }
+
+      // הגנה: אם המפתח לא הוחלף — לא שוברים את ה-UX, מפנים ל-Telegram
+      if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY.indexOf('REPLACE') !== -1) {
+        showError('הטופס אינו זמין כרגע. אנא כתבו ב-Telegram @juli_x11 — נענה אישית.');
+        try { console.warn('[contact-form] WEB3FORMS_ACCESS_KEY is not set'); } catch (_) {}
+        return;
+      }
+
+      submitBtn.disabled = true;
+      var originalText = submitBtn.textContent;
+      submitBtn.textContent = 'שולח…';
+
+      var payload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        from_name: 'tzahal-advokat.com (HE)',
+        subject: 'פנייה מ-tzahal-advokat.com — ' + data.name,
+        name: data.name,
+        phone: data.phone,
+        telegram: data.telegram || '(לא צוין)',
+        message: data.message,
+        page: location.pathname,
+        lang: 'he',
+        botcheck: form._honey && form._honey.value ? form._honey.value : ''
+      };
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function(r) { return r.json().then(function(j) { return { ok: r.ok, body: j }; }); })
+      .then(function(res) {
+        var bodyOk = res.body && (res.body.success === true || res.body.success === 'true');
+        if (!res.ok || !bodyOk) {
+          throw new Error((res.body && res.body.message) || 'send_failed');
+        }
+        form.style.display = 'none';
+        successEl.hidden = false;
+        try {
+          if (typeof gtag === 'function') {
+            gtag('event', 'form_submit', {
+              button_location: 'contact_form',
+              button_type: 'form',
+              page_path: location.pathname
+            });
+          }
+          if (typeof ym === 'function') {
+            ym(108440645, 'reachGoal', 'form_submit', { source: 'contact_form' });
+          }
+        } catch (_) {}
+      })
+      .catch(function(err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        showError('השליחה נכשלה. אנא כתבו ב-Telegram @juli_x11 — נקבל שם את ההודעה.');
+        try { console.warn('[contact-form]', err); } catch (_) {}
+      });
+    });
+  })();
+
   // cta_click_tracker_v2 — GA4 + Yandex.Metrika event tracking for Telegram + WhatsApp CTAs
   (function() {
     var LOCATIONS = [
